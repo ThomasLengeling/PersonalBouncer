@@ -1,0 +1,28 @@
+dependencies: \
+  /Users/thomas/Documents/Programming/Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2Contact.cpp \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2Contact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Settings.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2Collision.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/Shapes/b2Shape.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2BlockAllocator.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2Fixture.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2Body.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2CircleContact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2PolygonContact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2ContactSolver.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2TimeStep.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2TimeOfImpact.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2Distance.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2World.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2StackAllocator.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2ContactManager.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2BroadPhase.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2DynamicTree.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2GrowableStack.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2WorldCallbacks.h

@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/thomas/Documents/Programming/Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2Joint.cpp \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2Joint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Settings.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2DistanceJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2WheelJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2MouseJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2RevoluteJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2PrismaticJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2PulleyJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2GearJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2WeldJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2FrictionJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2RopeJoint.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2Body.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/Shapes/b2Shape.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2BlockAllocator.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2Collision.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2World.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2StackAllocator.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2ContactManager.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2BroadPhase.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2DynamicTree.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2GrowableStack.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2WorldCallbacks.h \
+  ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2TimeStep.h
