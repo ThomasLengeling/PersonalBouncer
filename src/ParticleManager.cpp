@@ -26,9 +26,24 @@ namespace physics {
         for(auto & particle : mParticleManager){
             particle->update();
             
+            vec3 pos = particle->getPos();
+            float radius = particle->getSize();
+            
+            if(pos.x > mDim.x - radius || pos.x <  radius){
+                particle->changeDirX();
+            }
+            
+            if(pos.y > mDim.y - radius|| pos.y < radius){
+                particle->changeDirY();
+            }
+            
+            if(pos.z > mDim.z - radius || pos.z < radius){
+                particle->changeDirZ();
+            }
+            
             gl::ScopedMatrices mat;
             gl::ScopedColor col(particle->getColor());
-            gl::translate(particle->getPos());
+            gl::translate(pos);
             gl::scale(ci::vec3(particle->getSize()));
             mCircleBatch->draw();
         }

@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2RevoluteJoint.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2Joint.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \

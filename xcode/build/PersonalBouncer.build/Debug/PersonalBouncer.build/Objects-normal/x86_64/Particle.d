@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/media_lab/PersonalBouncer/src/Particle.cpp \
-  /Users/thomas/Documents/Programming/media_lab/PersonalBouncer/src/Particle.h
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/Particle.cpp \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/Particle.h

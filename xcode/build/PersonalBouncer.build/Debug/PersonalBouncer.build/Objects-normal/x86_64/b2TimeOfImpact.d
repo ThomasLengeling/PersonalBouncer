@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/Cinder/blocks/Box2D/src/Box2D/Collision/b2TimeOfImpact.cpp \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Box2D/src/Box2D/Collision/b2TimeOfImpact.cpp \
   ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2Collision.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Settings.h \

@@ -35,6 +35,11 @@ namespace physics {
         ci::ColorA  getColor();
         float       getSize();
         
+        
+        void changeDirX();
+        void changeDirY();
+        void changeDirZ();
+        
     private:
         ci::vec3   mVel;
         ci::vec3   mPos;
