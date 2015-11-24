@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5C6FF1CA80988DB144A2F6CD0E7DC665C23686FE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AD4B458D0D225ED63FAE0155615993B7D3ECE020" : 0,
+    "270EDC1FA2EEE7B9D87EC8FA55AD08FA45F63F8B" : 0,
+    "5C6FF1CA80988DB144A2F6CD0E7DC665C23686FE" : 0,
+    "093054882F237AE55595B5030489BF34E5DD31B9" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "540C4426-8863-49FD-88DD-298615911821",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AD4B458D0D225ED63FAE0155615993B7D3ECE020" : "..\/Cinder",
+    "270EDC1FA2EEE7B9D87EC8FA55AD08FA45F63F8B" : "..\/Cinder\/blocks\/Cinder-Bullet3D",
+    "5C6FF1CA80988DB144A2F6CD0E7DC665C23686FE" : "PersonalBouncer\/",
+    "093054882F237AE55595B5030489BF34E5DD31B9" : "..\/Cinder\/blocks\/Cinder-MIDI2"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PersonalBouncer",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "xcode\/PersonalBouncer.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MartinBspheroid\/Cinder-MIDI2",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "093054882F237AE55595B5030489BF34E5DD31B9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ryanbartley\/Cinder-Bullet3D",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "270EDC1FA2EEE7B9D87EC8FA55AD08FA45F63F8B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ThomasLengeling\/PersonalBouncer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5C6FF1CA80988DB144A2F6CD0E7DC665C23686FE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cinder\/Cinder.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AD4B458D0D225ED63FAE0155615993B7D3ECE020"
+    }
+  ]
+}
