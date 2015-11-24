@@ -1,7 +1,7 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/Cinder/blocks/Cinder-Bullet3D/src/Cinder-Bullet3D/Common.cpp \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-Bullet3D/src/Cinder-Bullet3D/Common.cpp \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/Cinder-Bullet3D/Common.h \
-  /Users/thomas/Documents/Programming/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletCollisionCommon.h \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletCollisionCommon.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletCollision/CollisionDispatch/btCollisionWorld.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btVector3.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btScalar.h \
@@ -72,7 +72,7 @@ dependencies: \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btDefaultMotionState.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btQuickprof.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btIDebugDraw.h \
-  /Users/thomas/Documents/Programming/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletDynamicsCommon.h \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletDynamicsCommon.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/Dynamics/btDynamicsWorld.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \

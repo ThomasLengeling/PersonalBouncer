@@ -11,7 +11,7 @@ using namespace mainScene;
 void PersonalBouncerApp::prepareSettings( Settings *settings )
 {
     
-    //settings->setHighDensityDisplayEnabled();
+    //settings->setHighDensityDisplayEnabled()
     settings->setWindowSize( 1080, 720 );
 
 }
@@ -19,7 +19,7 @@ void PersonalBouncerApp::prepareSettings( Settings *settings )
 void PersonalBouncerApp::setup()
 {
     
-    mMainScene = MainScene::create(ci::vec2(680, 680));
+    mMainScene = MainScene::create(getWindowSize());
     mMainScenePos   = ci::vec2(20, 20);
     
     mMainScene->createParticles();
@@ -40,7 +40,9 @@ void PersonalBouncerApp::draw()
 	gl::clear( Color( 0, 0, 0 ) );
     
     ci::gl::enableAlphaBlending(true);
-    ci::gl::enableAlphaBlendingPremult();
+   // ci::gl::enableAlphaBlendingPremult();
+    
+    gl::setMatricesWindow( toPixels( getWindowSize() ) );
     
     {
         gl::ScopedMatrices mat;

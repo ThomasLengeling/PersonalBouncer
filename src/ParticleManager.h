@@ -35,6 +35,11 @@ namespace physics {
         
         void addParticle(ParticleRef part);
         
+        
+        ci::vec3 intersect(ci::vec3 point1, ci::vec3 point2, ci::vec3 point3, ci::vec3 point4);
+        
+        bool sameSign(float a, float b);
+        
     private:
         
         std::vector<ParticleRef> mParticleManager;

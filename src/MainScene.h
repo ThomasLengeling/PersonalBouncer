@@ -12,6 +12,7 @@
 #include "cinder/gl/Fbo.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
+#include "cinder/Rand.h"
 
 #include "ParticleManager.h"
 
@@ -23,9 +24,9 @@ namespace mainScene{
     class MainScene{
     public:
         
-        MainScene(ci::vec2  size);
+        MainScene(ci::ivec2  size);
         
-        static MainSceneRef create(ci::vec2  size){
+        static MainSceneRef create(ci::ivec2  size){
             return std::make_shared<MainScene>(size);
         }
         
@@ -49,7 +50,7 @@ namespace mainScene{
         
         ci::gl::FboRef              mFbo;
         
-        ci::vec2                    mFboSize;
+        ci::ivec2                   mFboSize;
         
         ci::ColorA                  mBkgColor;
         

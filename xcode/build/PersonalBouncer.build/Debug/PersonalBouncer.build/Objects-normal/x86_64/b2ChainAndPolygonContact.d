@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Contacts/b2Contact.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \
