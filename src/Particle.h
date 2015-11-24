@@ -26,11 +26,15 @@ namespace physics {
         void update();
         
         void setPos(ci::vec3 pos);
-        void setVel(ci::vec3  vel);
+        void setVel(ci::vec3 vel);
+        void setDir(ci::vec3 dir);
         void setColor(ci::ColorA col);
         void setSize(float size);
         
         ci::vec3    getPos();
+        ci::vec3    getDir();
+        ci::vec3    getPrevDir();
+        
         ci::vec3    getVel();
         ci::ColorA  getColor();
         float       getSize();
@@ -44,6 +48,7 @@ namespace physics {
         ci::vec3   mVel;
         ci::vec3   mPos;
         ci::vec3   mDir;
+        ci::vec3   mPrevDir;
         ci::vec3   mDrag;
         
         ci::ColorA mColor;

@@ -15,26 +15,28 @@ namespace physics{
         mSize  =  1.0f;
         mVel   =  ci::vec3(0, 0.1, 0);
         mColor =  ci::ColorA(0, 1, 0, 1);
-        mDir   =  ci::vec3(1, 1, 1);
+        mDir   =  ci::vec3(1, 1, 0);
+        mPrevDir = mDir;
     }
     
     void Particle::update()
     {
+        mPrevDir = mDir;
         mPos += mVel * mDir;
     }
     
-    
     void Particle::setPos(ci::vec3 pos){mPos = pos;}
     void Particle::setVel(ci::vec3 vel){mVel = vel;}
+    void Particle::setDir(ci::vec3 dir){mDir = dir;}
     void Particle::setColor(ci::ColorA col){mColor = col;}
     void Particle::setSize(float size){mSize = size;}
     
     ci::vec3    Particle::getPos(){return mPos;}
+    ci::vec3    Particle::getDir(){return mDir;}
+    ci::vec3    Particle::getPrevDir(){return mPrevDir;}
     ci::vec3    Particle::getVel(){return mVel;}
     ci::ColorA  Particle::getColor(){return mColor;}
     float       Particle::getSize(){ return mSize; }
-    
-    
     
     void Particle::changeDirX()
     {

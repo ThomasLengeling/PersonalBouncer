@@ -12,6 +12,7 @@
 #include "cinder/gl/Fbo.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
+#include "cinder/Rand.h"
 
 #include "ParticleManager.h"
 
