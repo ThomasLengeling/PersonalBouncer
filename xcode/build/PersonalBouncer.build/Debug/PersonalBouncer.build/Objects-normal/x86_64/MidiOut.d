@@ -1,11 +1,11 @@
 dependencies: \
-  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-MIDI2/src/MidiOut.cpp \
-  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-MIDI2/include/MidiOut.h \
+  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Cinder-MIDI2/src/MidiOut.cpp \
+  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Cinder-MIDI2/include/MidiOut.h \
   ../../../Cinder/blocks/Cinder-MIDI2/include/MidiHeaders.h \
   ../../../Cinder/blocks/Cinder-MIDI2/include/MidiConstants.h \
   ../../../Cinder/blocks/Cinder-MIDI2/include/MidiExceptions.h \
   ../../../Cinder/blocks/Cinder-MIDI2/include/MidiMessage.h \
-  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-MIDI2/lib/RtMidi.h \
+  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Cinder-MIDI2/lib/RtMidi.h \
   ../../../Cinder/blocks/Cinder-MIDI2/lib/RtError.h \
   ../../../Cinder/blocks/Cinder-MIDI2/include/MidiIn.h \
   ../../../Cinder/include/boost/signals2.hpp \

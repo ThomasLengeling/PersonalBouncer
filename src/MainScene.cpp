@@ -42,7 +42,7 @@ namespace mainScene {
     
     void MainScene::createParticles()
     {
-        for(int i  = 0; i < 2; i++){
+        for(int i  = 0; i < 20; i++){
             ParticleRef part = Particle::create();
             part->setPos(ci::vec3(mFboSize.x/2.0f, mFboSize.y/2.0f, 0));
             

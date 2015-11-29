@@ -1,0 +1,37 @@
+dependencies: \
+  /Users/thomas/Documents/Programming/Cinder_lib/media_lab/PersonalBouncer/src/AudioPlayer.cpp \
+  /Users/thomas/Documents/Programming/Cinder_lib/media_lab/PersonalBouncer/src/AudioPlayer.h \
+  ../../../Cinder/include/cinder/audio/audio.h \
+  ../../../Cinder/include/cinder/audio/Buffer.h \
+  ../../../Cinder/include/cinder/audio/Context.h \
+  ../../../Cinder/include/cinder/audio/Node.h \
+  ../../../Cinder/include/cinder/audio/Exception.h \
+  ../../../Cinder/include/cinder/audio/InputNode.h \
+  ../../../Cinder/include/cinder/audio/Param.h \
+  ../../../Cinder/include/cinder/audio/Device.h \
+  ../../../Cinder/include/cinder/audio/OutputNode.h \
+  ../../../Cinder/include/cinder/audio/Source.h \
+  ../../../Cinder/include/cinder/audio/Target.h \
+  ../../../Cinder/include/cinder/audio/SampleType.h \
+  ../../../Cinder/include/cinder/audio/Utilities.h \
+  ../../../Cinder/include/cinder/audio/Voice.h \
+  ../../../Cinder/include/cinder/audio/SamplePlayerNode.h \
+  ../../../Cinder/include/cinder/audio/dsp/RingBuffer.h \
+  ../../../Cinder/include/cinder/audio/WaveTable.h \
+  ../../../Cinder/include/cinder/audio/WaveformType.h \
+  ../../../Cinder/include/cinder/audio/NodeEffects.h \
+  ../../../Cinder/include/cinder/audio/GainNode.h \
+  ../../../Cinder/include/cinder/audio/NodeMath.h \
+  ../../../Cinder/include/cinder/audio/DelayNode.h \
+  ../../../Cinder/include/cinder/audio/PanNode.h \
+  ../../../Cinder/include/cinder/audio/FilterNode.h \
+  ../../../Cinder/include/cinder/audio/dsp/Biquad.h \
+  ../../../Cinder/include/cinder/audio/dsp/Dsp.h \
+  ../../../Cinder/include/cinder/audio/ChannelRouterNode.h \
+  ../../../Cinder/include/cinder/audio/GenNode.h \
+  ../../../Cinder/include/cinder/audio/MonitorNode.h \
+  ../../../Cinder/include/cinder/audio/SampleRecorderNode.h \
+  ../../../Cinder/include/cinder/audio/dsp/Converter.h \
+  ../../../Cinder/include/cinder/audio/dsp/Fft.h \
+  ../../../Cinder/include/cinder/Log.h \
+  ../../../Cinder/include/cinder/System.h

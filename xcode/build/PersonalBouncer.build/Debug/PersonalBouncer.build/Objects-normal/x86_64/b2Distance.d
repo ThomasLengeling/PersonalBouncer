@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Box2D/src/Box2D/Collision/b2Distance.cpp \
+  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Box2D/src/Box2D/Collision/b2Distance.cpp \
   ../../../Cinder/blocks/Box2D/src/Box2D/Collision/b2Distance.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Settings.h \

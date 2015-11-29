@@ -80,6 +80,7 @@
 		E882C42A9B974FB7B9DFD79B /* b2Island.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8495A0A22A1B42FA92AAB617 /* b2Island.cpp */; };
 		E8883D4662174F1F944DF7D0 /* b2MouseJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F6B687CBE416280FE7DF4 /* b2MouseJoint.cpp */; };
 		E8DBE9DEB118408982B4B825 /* ConstraintGeneric6Dof.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846FE149357741AD8E1B86D0 /* ConstraintGeneric6Dof.cpp */; };
+		E988ABD91C04D76100DE86F6 /* AudioPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E988ABD71C04D76100DE86F6 /* AudioPlayer.cpp */; };
 		E9EBC0881BFFE003003620F2 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9EBC0801BFFE003003620F2 /* MainScene.cpp */; };
 		E9EBC0891BFFE003003620F2 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9EBC0821BFFE003003620F2 /* Particle.cpp */; };
 		E9EBC08A1BFFE003003620F2 /* ParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9EBC0841BFFE003003620F2 /* ParticleManager.cpp */; };
@@ -526,6 +527,8 @@
 		E873BCB6D7E64AD58085ABE8 /* btCollisionMargin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = btCollisionMargin.h; path = "../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletCollision/CollisionShapes/btCollisionMargin.h"; sourceTree = "<group>"; };
 		E881E451E1C5435D95CAD0E8 /* btMinkowskiSumShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = btMinkowskiSumShape.cpp; path = "../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletCollision/CollisionShapes/btMinkowskiSumShape.cpp"; sourceTree = "<group>"; };
 		E8DA341FB4984C05A91F4DDF /* b2ChainShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = b2ChainShape.cpp; path = ../../../Cinder/blocks/Box2D/src/Box2D/Collision/Shapes/b2ChainShape.cpp; sourceTree = "<group>"; };
+		E988ABD71C04D76100DE86F6 /* AudioPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioPlayer.cpp; path = ../src/AudioPlayer.cpp; sourceTree = "<group>"; };
+		E988ABD81C04D76100DE86F6 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlayer.h; path = ../src/AudioPlayer.h; sourceTree = "<group>"; };
 		E9EBC0801BFFE003003620F2 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = ../src/MainScene.cpp; sourceTree = "<group>"; };
 		E9EBC0811BFFE003003620F2 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../src/MainScene.h; sourceTree = "<group>"; };
 		E9EBC0821BFFE003003620F2 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Particle.cpp; path = ../src/Particle.cpp; sourceTree = "<group>"; };
@@ -633,6 +636,8 @@
 				E9EBC0851BFFE003003620F2 /* ParticleManager.h */,
 				E9EBC08C1C00C87D003620F2 /* PersonalBouncerApp.cpp */,
 				E9EBC0871BFFE003003620F2 /* PersonalBouncerApp.h */,
+				E988ABD71C04D76100DE86F6 /* AudioPlayer.cpp */,
+				E988ABD81C04D76100DE86F6 /* AudioPlayer.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -1493,6 +1498,7 @@
 				C199D201A7B34FB8A4B0FDA8 /* b2EdgeShape.cpp in Sources */,
 				95990F4B92F64304A843787F /* b2PolygonShape.cpp in Sources */,
 				88F0FDF7F79D43048D5CBA29 /* b2BlockAllocator.cpp in Sources */,
+				E988ABD91C04D76100DE86F6 /* AudioPlayer.cpp in Sources */,
 				B24C74B1BDC7462B8E956D47 /* b2Draw.cpp in Sources */,
 				43FEA70544384DA9B721B226 /* b2Math.cpp in Sources */,
 				06966B1B5F034FFB9E5474E1 /* b2Settings.cpp in Sources */,

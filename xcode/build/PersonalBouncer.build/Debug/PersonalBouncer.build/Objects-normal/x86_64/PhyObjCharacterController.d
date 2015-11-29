@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-Bullet3D/src/Cinder-Bullet3D/PhyObjCharacterController.cpp \
+  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Cinder-Bullet3D/src/Cinder-Bullet3D/PhyObjCharacterController.cpp \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/Cinder-Bullet3D/PhyObjCharacterController.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/Dynamics/btActionInterface.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btScalar.h \
@@ -16,7 +16,7 @@ dependencies: \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletCollision/CollisionDispatch/btCollisionObject.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btMotionState.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/Cinder-Bullet3D/Common.h \
-  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletCollisionCommon.h \
+  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletCollisionCommon.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletCollision/CollisionDispatch/btCollisionWorld.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletCollision/BroadphaseCollision/btDispatcher.h \
@@ -75,7 +75,7 @@ dependencies: \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btDefaultMotionState.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btQuickprof.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/LinearMath/btIDebugDraw.h \
-  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletDynamicsCommon.h \
+  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/btBulletDynamicsCommon.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/Dynamics/btDynamicsWorld.h \
   ../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
