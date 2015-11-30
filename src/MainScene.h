@@ -5,9 +5,7 @@
 //  Created by thomas on 11/19/15.
 //
 //
-
-#ifndef MainScene_hpp
-#define MainScene_hpp
+#pragma once
 
 #include "cinder/gl/Fbo.h"
 #include "cinder/gl/gl.h"
@@ -15,6 +13,7 @@
 #include "cinder/Rand.h"
 
 #include "ParticleManager.h"
+#include "Commun.h"
 
 namespace mainScene{
     
@@ -31,6 +30,9 @@ namespace mainScene{
         }
         
         void createParticles();
+        
+        
+        void createParticle(ci::vec3 dir, float tam, std::string name);
         
         void draw();
         void update();
@@ -61,6 +63,3 @@ namespace mainScene{
         bool                        mDrawBounds;
     };
 }
-
-
-#endif /* MainScene_hpp */

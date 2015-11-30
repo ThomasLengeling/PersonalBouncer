@@ -17,19 +17,53 @@ namespace physics{
         mColor =  ci::ColorA(0, 1, 0, 1);
         mDir   =  ci::vec3(1, 1, 0);
         mPrevDir = mDir;
+        mAudioName = "LinnSnare01.wav";
+        
+        //seconds
+        mTravelTime = 1.5;
+        
+        mVolumen = 0.5;
     }
     
     void Particle::update()
     {
         mPrevDir = mDir;
-        mPos += mVel * mDir;
+        mPos += (mVel * mDir);
+    }
+    
+    
+    void Particle::calculateNewVel(double len)
+    {
+        ci::vec3 newVel = ci::vec3(len / mTravelTime) * (glm::sign(mVel * mDir));
+        ci::vec3 newVelDir = newVel +  mVel * mDir;
+        
+        ci::app::console()<<newVel<<" "<<mVel<<" "<<glm::sign(mVel)<<" "<<newVelDir<<std::endl;
+        mVel = newVelDir;
+    }
+    
+    void Particle::calculateNewVel(ci::vec3 len)
+    {
+        ci::vec3 newVel = ci::vec3( abs(len) / ci::vec3(mTravelTime));
+        
+        mVel = newVel;
     }
     
     void Particle::setPos(ci::vec3 pos){mPos = pos;}
     void Particle::setVel(ci::vec3 vel){mVel = vel;}
-    void Particle::setDir(ci::vec3 dir){mDir = dir;}
+    void Particle::setDir(ci::vec3 dir){
+        if(dir.x == 0)
+            dir.x = -1;
+        if(dir.y == 0)
+            dir.y = 1;
+        mDir = dir;
+    }
+    
     void Particle::setColor(ci::ColorA col){mColor = col;}
     void Particle::setSize(float size){mSize = size;}
+    void Particle::setAudioName(std::string name){mAudioName = name;}
+    void Particle::setTravelTime(double time){mTravelTime = time;}
+    void Particle::setAudioSource(cinder::DataSourceRef source){mAudioSource = source;}
+    void Particle::setVolume(double volumen){mVolumen = volumen;}
     
     ci::vec3    Particle::getPos(){return mPos;}
     ci::vec3    Particle::getDir(){return mDir;}
@@ -37,6 +71,10 @@ namespace physics{
     ci::vec3    Particle::getVel(){return mVel;}
     ci::ColorA  Particle::getColor(){return mColor;}
     float       Particle::getSize(){ return mSize; }
+    std::string Particle::getAudioName(){return mAudioName;}
+    double      Particle::getTravelTime(){return mTravelTime;}
+    cinder::DataSourceRef Particle::getAudioSource(){return mAudioSource;}
+    float       Particle::getVolumen(){return mVolumen;}
     
     void Particle::changeDirX()
     {

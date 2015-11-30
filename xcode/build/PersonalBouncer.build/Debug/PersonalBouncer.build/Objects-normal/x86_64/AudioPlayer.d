@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/Cinder_lib/media_lab/PersonalBouncer/src/AudioPlayer.cpp \
-  /Users/thomas/Documents/Programming/Cinder_lib/media_lab/PersonalBouncer/src/AudioPlayer.h \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/AudioPlayer.cpp \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/AudioPlayer.h \
   ../../../Cinder/include/cinder/audio/audio.h \
   ../../../Cinder/include/cinder/audio/Buffer.h \
   ../../../Cinder/include/cinder/audio/Context.h \

@@ -42,14 +42,26 @@ namespace mainScene {
     
     void MainScene::createParticles()
     {
-        for(int i  = 0; i < 20; i++){
+        {
             ParticleRef part = Particle::create();
             part->setPos(ci::vec3(mFboSize.x/2.0f, mFboSize.y/2.0f, 0));
+        
+            //time
+            part->setTravelTime(120.5);
             
             //vel
-            float vx = ci::randFloat(1.2, 2.1);
-            float vy = ci::randFloat(0.4, 2.3);
+            float vx = ci::randFloat(1.0, 3.5);
+            float vy = ci::randFloat(1.0, 3.5);
             part->setVel(ci::vec3(vx, vy, 0.0));
+            
+            //dir
+            int dx = ci::randInt(-1, 1);
+            int dy = ci::randInt(-1, 1);
+            if(dy == 0)
+                dy = -1;
+            if(dx == 0)
+                dx = 1;
+            part->setDir(ci::vec3(dx, dy, 0));
             
             //size
             float rand =  ci::randFloat(10, 20);
@@ -61,9 +73,45 @@ namespace mainScene {
             ci::ColorA col = ci::ColorA(0, 0.6 + rg, 0.7 + rb, 0.7);
             part->setColor(col);
             
+            //set audio name file
+            //if(i == 0){
+            part->setAudioSource(cinder::app::loadAsset("Linn Drum/LinnSnare03.wav"));
+            
             mParticleManager->addParticle(part);
         }
 
+    }
+    
+    void MainScene::createParticle(ci::vec3 dir, float tam, std::string name)
+    {
+        ParticleRef part = Particle::create();
+        part->setPos(ci::vec3(mFboSize.x/2.0f, mFboSize.y/2.0f, 0));
+        
+        //time
+        part->setTravelTime(120.5);
+        
+        //vel
+        float vx = ci::randFloat(1.0, 3.5);
+        float vy = ci::randFloat(1.0, 3.5);
+        part->setVel(ci::vec3(vx, vy, 0.0));
+        
+        //dir
+        part->setDir(dir);
+        
+        //size
+        part->setSize(tam * TAM_MAX);
+        part->setVolume(tam);
+        
+        //color
+        float rg = ci::randFloat(0, 0.3);
+        float rb = ci::randFloat(0, 0.3);
+        ci::ColorA col = ci::ColorA(0, 0.6 + rg, 0.7 + rb, 0.7);
+        part->setColor(col);
+        
+        //set audio name file
+        part->setAudioSource(cinder::app::loadAsset(name));
+        
+        mParticleManager->addParticle(part);
     }
     
     

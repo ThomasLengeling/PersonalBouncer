@@ -6,11 +6,14 @@
 //
 //
 
-#ifndef ParticleManager_hpp
-#define ParticleManager_hpp
+#pragma once
 
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/gl.h"
+#include "cinder/Log.h"
+
+#include "poSoundManager/poSoundManager.h"
+#include "SoundManager.h"
 
 #include "Particle.h"
 
@@ -50,6 +53,3 @@ namespace physics {
         
     };
 }
-
-
-#endif /* ParticleManager_hpp */

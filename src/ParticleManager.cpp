@@ -32,8 +32,10 @@ namespace physics {
             
             float radius = particle->getSize();
             
-            if(pos.x > mDim.x - radius){
-                
+            
+            
+            if(pos.x > mDim.x - radius - vel.x){
+            
                 particle->changeDirX();
                 
                 //get new dir
@@ -47,11 +49,11 @@ namespace physics {
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
                 
                 if(newPoint01.x != 0.0 && newPoint01.y != 0.0){
-                    newPoint = newPoint01;
+                    newPoint = newPoint01  + vec3(0, radius, 0);
                 }else if( newPoint02.x != 0.0 && newPoint02.y != 0.0){
-                    newPoint = newPoint02;
+                    newPoint = newPoint02 + vec3(radius, 0, 0);
                 }else{
-                    newPoint = newPoint03;
+                    newPoint = newPoint03 - vec3(0, radius, 0);
                 }
                 
                 gl::ScopedColor col(ci::Color(1, 0, 0));
@@ -59,10 +61,17 @@ namespace physics {
                 
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
                 gl::drawSolidCircle(ci::vec2(pos), 50);
+
                 
+                
+                //vec2 distance = length(newPoint, pos);
+                particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
+                unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+                CI_LOG_V(particle->getVolumen());
+                po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
-            if(pos.x < radius){
+            if(pos.x < radius + vel.x){
                 
                 particle->changeDirX();
             
@@ -77,11 +86,11 @@ namespace physics {
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
-                    newPoint = newPoint01;
+                    newPoint = newPoint01 + vec3(0, radius, 0);
                 }else if( newPoint02.x != 0 && newPoint02.y != 0){
-                    newPoint = newPoint02;
+                    newPoint = newPoint02 - vec3(radius, 0, 0);
                 }else{
-                    newPoint = newPoint03;
+                    newPoint = newPoint03 - vec3(0, radius, 0);
                 }
                 
                 gl::ScopedColor col(ci::Color(1, 0, 0));
@@ -90,9 +99,13 @@ namespace physics {
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
                 gl::drawSolidCircle(ci::vec2(pos), 50);
 
+                particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
+                unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+                
+                po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
-            if(pos.y > mDim.y - radius){
+            if(pos.y > mDim.y - radius - vel.y){
                 
                 particle->changeDirY();
                 
@@ -107,11 +120,11 @@ namespace physics {
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(0, mDim.y, 0));
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
-                    newPoint = newPoint01;
+                    newPoint = newPoint01 + vec3(0, radius, 0);
                 }else if( newPoint02.x != 0 && newPoint02.y != 0){
-                    newPoint = newPoint02;
+                    newPoint = newPoint02 - vec3(radius,0, 0);
                 }else{
-                    newPoint = newPoint03;
+                    newPoint = newPoint03 + vec3(radius, 0, 0);
                 }
                 
                 gl::ScopedColor col(ci::Color(1, 0, 0));
@@ -119,9 +132,14 @@ namespace physics {
                 
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
                 gl::drawSolidCircle(ci::vec2(pos), 50);
+                
+                particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
+                unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+                
+                po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
-            if(pos.y < radius){
+            if(pos.y < radius + vel.y){
                 particle->changeDirY();
                 
                 //get new dir
@@ -135,11 +153,11 @@ namespace physics {
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
-                    newPoint = newPoint01;
+                    newPoint = newPoint01 + vec3(radius, 0, 0);
                 }else if( newPoint02.x != 0 && newPoint02.y != 0){
-                    newPoint = newPoint02;
+                    newPoint = newPoint02 - vec3(radius, 0, 0);
                 }else{
-                    newPoint = newPoint03;
+                    newPoint = newPoint03 - vec3(0, radius, 0);
                 }
                 
                 gl::ScopedColor col(ci::Color(1, 0, 0));
@@ -148,6 +166,10 @@ namespace physics {
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
                 gl::drawSolidCircle(ci::vec2(pos), 50);
                 
+                particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
+                unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+                
+                po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
             if(pos.z > mDim.z - radius || pos.z < radius){

@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2DistanceJoint.cpp \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2DistanceJoint.cpp \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2DistanceJoint.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/Joints/b2Joint.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \

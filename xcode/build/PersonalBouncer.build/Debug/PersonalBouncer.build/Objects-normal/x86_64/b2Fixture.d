@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/thomas/Documents/Programming/Cinder_lib/Cinder/blocks/Box2D/src/Box2D/Dynamics/b2Fixture.cpp \
+  /Users/tom/Documents/Programming/Cinder/Cinder/blocks/Box2D/src/Box2D/Dynamics/b2Fixture.cpp \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2Fixture.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Dynamics/b2Body.h \
   ../../../Cinder/blocks/Box2D/src/Box2D/Common/b2Math.h \
