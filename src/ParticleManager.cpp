@@ -16,7 +16,7 @@ namespace physics {
     {
         auto lambert = gl::ShaderDef().lambert().color();
         gl::GlslProgRef shader = gl::getStockShader( lambert );
-        mCircleBatch = gl::Batch::create( geom::Circle().subdivisions(16), shader );
+        mCircleBatch = gl::Batch::create( geom::Circle().subdivisions(32), shader );
         
         mDim = sizeSpace;
     }
@@ -31,12 +31,20 @@ namespace physics {
             vec3 vel     = particle->getVel();
             
             float radius = particle->getSize();
-            
-            
-            
+
+            {
+                gl::ScopedMatrices mat;
+                gl::ScopedColor col(particle->getColor());
+                gl::translate(pos);
+                gl::scale(ci::vec3(particle->getSize()));
+                mCircleBatch->draw();
+            }
+        
             if(pos.x > mDim.x - radius - vel.x){
             
                 particle->changeDirX();
+                
+                pos += vel*dir;
                 
                 //get new dir
                 vec3 newDir = particle->getDir();
@@ -49,21 +57,19 @@ namespace physics {
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
                 
                 if(newPoint01.x != 0.0 && newPoint01.y != 0.0){
-                    newPoint = newPoint01  + vec3(0, radius, 0);
+                    newPoint = newPoint01;
                 }else if( newPoint02.x != 0.0 && newPoint02.y != 0.0){
-                    newPoint = newPoint02 + vec3(radius, 0, 0);
+                    newPoint = newPoint02;
                 }else{
-                    newPoint = newPoint03 - vec3(0, radius, 0);
+                    newPoint = newPoint03;
                 }
                 
-                gl::ScopedColor col(ci::Color(1, 0, 0));
+                gl::ScopedColor col(ci::Color(0.3, 0.3, 0.3));
                 gl::drawLine(pos, newPoint);
                 
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
                 gl::drawSolidCircle(ci::vec2(pos), 50);
 
-                
-                
                 //vec2 distance = length(newPoint, pos);
                 particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
                 unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
@@ -72,6 +78,8 @@ namespace physics {
             }
             
             if(pos.x < radius + vel.x){
+                
+                pos += vel*dir;
                 
                 particle->changeDirX();
             
@@ -85,15 +93,16 @@ namespace physics {
                 ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDim.x, 0, 0), ci::vec3(mDim.x, mDim.y, 0));
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
                 
+                
                 if(newPoint01.x != 0 && newPoint01.y != 0){
-                    newPoint = newPoint01 + vec3(0, radius, 0);
+                    newPoint = newPoint01;
                 }else if( newPoint02.x != 0 && newPoint02.y != 0){
-                    newPoint = newPoint02 - vec3(radius, 0, 0);
+                    newPoint = newPoint02;
                 }else{
-                    newPoint = newPoint03 - vec3(0, radius, 0);
+                    newPoint = newPoint03;
                 }
                 
-                gl::ScopedColor col(ci::Color(1, 0, 0));
+                gl::ScopedColor col(ci::Color(0.3, 0.3, 0.3));
                 gl::drawLine(pos, newPoint);
                 
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
@@ -109,6 +118,8 @@ namespace physics {
                 
                 particle->changeDirY();
                 
+                pos += vel*dir;
+                
                 //get new dir
                 vec3 newDir = particle->getDir();
                 
@@ -120,14 +131,14 @@ namespace physics {
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(0, mDim.y, 0));
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
-                    newPoint = newPoint01 + vec3(0, radius, 0);
+                    newPoint = newPoint01;
                 }else if( newPoint02.x != 0 && newPoint02.y != 0){
-                    newPoint = newPoint02 - vec3(radius,0, 0);
+                    newPoint = newPoint02;
                 }else{
-                    newPoint = newPoint03 + vec3(radius, 0, 0);
+                    newPoint = newPoint03;
                 }
                 
-                gl::ScopedColor col(ci::Color(1, 0, 0));
+                gl::ScopedColor col(ci::Color(0.3, 0.3, 0.3));
                 gl::drawLine(pos, newPoint);
                 
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
@@ -142,6 +153,8 @@ namespace physics {
             if(pos.y < radius + vel.y){
                 particle->changeDirY();
                 
+                pos += vel*dir;
+                
                 //get new dir
                 vec3 newDir = particle->getDir();
                 
@@ -153,14 +166,14 @@ namespace physics {
                 ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
-                    newPoint = newPoint01 + vec3(radius, 0, 0);
+                    newPoint = newPoint01;
                 }else if( newPoint02.x != 0 && newPoint02.y != 0){
-                    newPoint = newPoint02 - vec3(radius, 0, 0);
+                    newPoint = newPoint02;
                 }else{
-                    newPoint = newPoint03 - vec3(0, radius, 0);
+                    newPoint = newPoint03;
                 }
                 
-                gl::ScopedColor col(ci::Color(1, 0, 0));
+                gl::ScopedColor col(ci::Color(0.3, 0.3, 0.3));
                 gl::drawLine(pos, newPoint);
                 
                 gl::drawSolidCircle(ci::vec2(newPoint), 50);
@@ -175,12 +188,7 @@ namespace physics {
             if(pos.z > mDim.z - radius || pos.z < radius){
                 particle->changeDirZ();
             }
-            
-            gl::ScopedMatrices mat;
-            gl::ScopedColor col(particle->getColor());
-            gl::translate(pos);
-            gl::scale(ci::vec3(particle->getSize()));
-            mCircleBatch->draw();
+
         }
         
     }

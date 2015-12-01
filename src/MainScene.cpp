@@ -88,7 +88,7 @@ namespace mainScene {
         part->setPos(ci::vec3(mFboSize.x/2.0f, mFboSize.y/2.0f, 0));
         
         //time
-        part->setTravelTime(120.5);
+        part->setTravelTime(120);
         
         //vel
         float vx = ci::randFloat(1.0, 3.5);
@@ -104,8 +104,7 @@ namespace mainScene {
         
         //color
         float rg = ci::randFloat(0, 0.3);
-        float rb = ci::randFloat(0, 0.3);
-        ci::ColorA col = ci::ColorA(0, 0.6 + rg, 0.7 + rb, 0.7);
+        ci::ColorA col = ci::ColorA(1 - rg, 1 - rg, 1 - rg, 1.0);
         part->setColor(col);
         
         //set audio name file

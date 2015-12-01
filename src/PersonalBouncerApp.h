@@ -15,6 +15,7 @@
 #include "MainScene.h"
 #include "Commun.h"
 
+#include "poSoundManager/poSoundManager.h"
 
 
 
@@ -37,12 +38,13 @@ private:
     
     void resetBouncer();
     
-    bool        mCreateNewBall;
-    bool        mDrawParticle;
+    bool               mCreateNewBall;
+    bool               mDrawParticle;
     
-    
-    ci::vec3    mNewDir;
-    float       mNewAngle;
-    float       mNewTam;
+    std::vector<float> mCurrentSpectral;
+    unsigned int       mCurrentTrackID;
+    ci::vec3           mNewDir;
+    float              mNewAngle;
+    float              mNewTam;
 };
 

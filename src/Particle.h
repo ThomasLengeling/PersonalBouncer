@@ -36,6 +36,8 @@ namespace physics {
         void setTravelTime(double time);
         void setVolume(double volumen);
         
+        void setAudioSpectrall(const std::vector<float>  & mag);
+        
         ci::vec3    getPos();
         ci::vec3    getDir();
         ci::vec3    getPrevDir();
@@ -45,6 +47,7 @@ namespace physics {
         std::string getAudioName();
         double      getTravelTime();
         cinder::DataSourceRef  getAudioSource();
+        std::vector<float> getSpectral();
         
         float  getVolumen();
         
@@ -67,5 +70,7 @@ namespace physics {
         float        mVolumen;
         std::string  mAudioName;
         cinder::DataSourceRef mAudioSource;
+        
+        std::vector<float>    mAudioSpectral;
     };
 }

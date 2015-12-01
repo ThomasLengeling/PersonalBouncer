@@ -43,7 +43,7 @@ namespace physics{
     
     void Particle::calculateNewVel(ci::vec3 len)
     {
-        ci::vec3 newVel = ci::vec3( abs(len) / ci::vec3(mTravelTime));
+        ci::vec3 newVel = ci::vec3( (abs(len) - mSize) / ci::vec3(mTravelTime)); // -1 because we dont count the last velocity fo the collistion detection
         
         mVel = newVel;
     }
@@ -64,6 +64,7 @@ namespace physics{
     void Particle::setTravelTime(double time){mTravelTime = time;}
     void Particle::setAudioSource(cinder::DataSourceRef source){mAudioSource = source;}
     void Particle::setVolume(double volumen){mVolumen = volumen;}
+    void Particle::setAudioSpectrall(const std::vector<float>  & mag){mAudioSpectral = mag;}
     
     ci::vec3    Particle::getPos(){return mPos;}
     ci::vec3    Particle::getDir(){return mDir;}
@@ -75,6 +76,7 @@ namespace physics{
     double      Particle::getTravelTime(){return mTravelTime;}
     cinder::DataSourceRef Particle::getAudioSource(){return mAudioSource;}
     float       Particle::getVolumen(){return mVolumen;}
+    std::vector<float> Particle::getSpectral(){return mAudioSpectral;}
     
     void Particle::changeDirX()
     {

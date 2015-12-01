@@ -80,6 +80,8 @@ namespace po {
 		
 		//	Track panning
 		void setPan(unsigned int trackID, float pan);
+        
+        std::vector<float> getMagSpectrum(unsigned int trackID);
 		
 		//	Check if a track finished playing
         bool isSoundFinishedPlaying(unsigned int trackID);
@@ -97,6 +99,7 @@ namespace po {
             ci::audio::GainNodeRef gain;
             ci::audio::MonitorNodeRef monitor;
             ci::audio::Pan2dNodeRef pan;
+            ci::audio::MonitorSpectralNodeRef	mMonitorSpectralNode;
 			
             Track(ci::audio::BufferPlayerNodeRef bufferPlayer)
             : bufferPlayer(bufferPlayer)
@@ -106,7 +109,11 @@ namespace po {
                 gain    = context->makeNode(new ci::audio::GainNode(1.0));
                 monitor = context->makeNode(new ci::audio::MonitorNode);
 				pan     = context->makeNode(new ci::audio::Pan2dNode());
+                
 				pan->setStereoInputModeEnabled();
+                
+                auto monitorFormat   = ci::audio::MonitorSpectralNode::Format().fftSize(64).windowSize(1024);
+                mMonitorSpectralNode = context->makeNode(new ci::audio::MonitorSpectralNode(monitorFormat));
             }
             
             bool isFinished() {
@@ -115,7 +122,7 @@ namespace po {
             
             void connect(ci::audio::GainNodeRef masterGain) {
                 auto context = ci::audio::Context::master();
-                bufferPlayer >> monitor >> gain >> pan >> masterGain >> context->getOutput();
+                bufferPlayer >> monitor >>  mMonitorSpectralNode >> gain >> pan >> masterGain >> context->getOutput();
             }
             
             void disconnect() {
@@ -123,6 +130,7 @@ namespace po {
                 monitor->disconnectAll();
                 pan->disconnectAll();
                 bufferPlayer->disconnectAll();
+                mMonitorSpectralNode->disconnectAll();
             }
         };
         

@@ -211,6 +211,15 @@ namespace po {
 		}
 	}
     
+    std::vector<float> SoundManager::getMagSpectrum(unsigned int trackID)
+    {
+        if (mTracks.find(trackID) != mTracks.end()) {
+            
+            return mTracks[trackID]->mMonitorSpectralNode->getMagSpectrum();
+        }
+        return std::vector<float>();
+    }
+    
     
 	
 	void SoundManager::setPan(unsigned int trackID, float pan)
