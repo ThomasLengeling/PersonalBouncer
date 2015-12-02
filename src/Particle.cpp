@@ -25,6 +25,20 @@ namespace physics{
         mVolumen = 0.5;
     }
     
+    Particle::Particle(const Particle & p)
+    {
+        mPos = p.mPos;
+        mVel = p.mVel;
+        mSize = p.mSize;
+        mColor = p.mColor;
+        mDir = p.mDir;
+        mAudioName = p.mAudioName;
+        mTravelTime = p.mTravelTime;
+        mVolumen = p.mVolumen;
+        mAudioSource = p.mAudioSource;
+        mAudioSpectral  =p.mAudioSpectral;
+    }
+    
     void Particle::update()
     {
         mPrevDir = mDir;

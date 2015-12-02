@@ -29,13 +29,13 @@ namespace mainScene{
             return std::make_shared<MainScene>(size);
         }
         
-        void createParticles();
+        physics::ParticleRef getParticle(int index);
+        void addParticle(physics::ParticleRef part);
         
+        void createParticles();
         
         void createParticle(ci::vec3 dir, float tam, std::string name);
         
-        void draw();
-        void update();
         
         //bounds and size
         void toggleBounds();
@@ -44,7 +44,9 @@ namespace mainScene{
         void offScreenRender();
         ci::gl::Texture2dRef getFboTexture();
         
-   
+        void setBkgColor(ci::ColorA mBkg);
+        
+        void setColorParticles(ci::ColorA col);
         
     private:
         

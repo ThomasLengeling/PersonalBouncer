@@ -12,13 +12,14 @@ namespace physics {
     
     using namespace ci;
     
-    ParticleManager::ParticleManager(ci::vec3 sizeSpace)
+    ParticleManager::ParticleManager(ci::vec3 sizeTop, ci::vec3 sizeDown)
     {
         auto lambert = gl::ShaderDef().lambert().color();
         gl::GlslProgRef shader = gl::getStockShader( lambert );
         mCircleBatch = gl::Batch::create( geom::Circle().subdivisions(32), shader );
         
-        mDim = sizeSpace;
+        mDimTop  = sizeTop;
+        mDimDown = sizeDown;
     }
     
     void ParticleManager::draw()
@@ -40,7 +41,7 @@ namespace physics {
                 mCircleBatch->draw();
             }
         
-            if(pos.x > mDim.x - radius - vel.x){
+            if(pos.x > mDimDown.x - radius - vel.x){
             
                 particle->changeDirX();
                 
@@ -52,9 +53,9 @@ namespace physics {
                 ci::vec3 newPos = pos  + (vel * newDir * ci::vec3(10000));
                 ci::vec3 newPoint;
                 
-                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(mDim.x, 0, 0));
-                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(0, mDim.y, 0));
-                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
+                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimTop.y, 0), ci::vec3(mDimDown.x, mDimTop.y, 0));
+                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimTop.y, 0), ci::vec3(mDimTop.x, mDimDown.y, 0));
+                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimDown.y, 0), ci::vec3(mDimDown.x, mDimDown.y, 0));
                 
                 if(newPoint01.x != 0.0 && newPoint01.y != 0.0){
                     newPoint = newPoint01;
@@ -77,7 +78,7 @@ namespace physics {
                 po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
-            if(pos.x < radius + vel.x){
+            if(pos.x < mDimTop.x + radius + vel.x){
                 
                 pos += vel*dir;
                 
@@ -89,9 +90,9 @@ namespace physics {
                 ci::vec3 newPos = pos  + (vel * newDir * ci::vec3(10000));
                 ci::vec3 newPoint;
                 
-                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(mDim.x, 0, 0));
-                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDim.x, 0, 0), ci::vec3(mDim.x, mDim.y, 0));
-                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
+                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimTop.y, 0), ci::vec3(mDimDown.x, mDimTop.y, 0));
+                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDimDown.x, mDimTop.y, 0), ci::vec3(mDimDown.x, mDimDown.y, 0));
+                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimDown.y, 0), ci::vec3(mDimDown.x, mDimDown.y, 0));
                 
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
@@ -114,7 +115,7 @@ namespace physics {
                 po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
-            if(pos.y > mDim.y - radius - vel.y){
+            if(pos.y > mDimDown.y - radius - vel.y){
                 
                 particle->changeDirY();
                 
@@ -126,9 +127,9 @@ namespace physics {
                 ci::vec3 newPos = pos  + (vel * newDir * ci::vec3(10000));
                 ci::vec3 newPoint;
                 
-                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(mDim.x, 0, 0));
-                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDim.x, 0, 0), ci::vec3(mDim.x, mDim.y, 0));
-                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(0, mDim.y, 0));
+                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimTop.y, 0), ci::vec3(mDimDown.x, mDimTop.y, 0));
+                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDimDown.x, mDimTop.y, 0), ci::vec3(mDimDown.x, mDimDown.y, 0));
+                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimTop.y, 0), ci::vec3(mDimTop.x, mDimDown.y, 0));
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
                     newPoint = newPoint01;
@@ -150,7 +151,7 @@ namespace physics {
                 po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
-            if(pos.y < radius + vel.y){
+            if(pos.y < mDimTop.y + radius + vel.y){
                 particle->changeDirY();
                 
                 pos += vel*dir;
@@ -161,9 +162,9 @@ namespace physics {
                 ci::vec3 newPos = pos  + (vel * newDir * ci::vec3(10000));
                 ci::vec3 newPoint;
                 
-                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(0, 0, 0), ci::vec3(0, mDim.y, 0));
-                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDim.x, 0, 0), ci::vec3(mDim.x, mDim.y, 0));
-                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(0, mDim.y, 0), ci::vec3(mDim.x, mDim.y, 0));
+                ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimTop.y, 0), ci::vec3(mDimTop.x, mDimDown.y, 0));
+                ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDimDown.x, mDimTop.y, 0), ci::vec3(mDimDown.x, mDimDown.y, 0));
+                ci::vec3 newPoint03 = intersect(pos, newPos, ci::vec3(mDimTop.x, mDimDown.y, 0), ci::vec3(mDimDown.x, mDimDown.y, 0));
                 
                 if(newPoint01.x != 0 && newPoint01.y != 0){
                     newPoint = newPoint01;
@@ -185,7 +186,7 @@ namespace physics {
                 po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             }
             
-            if(pos.z > mDim.z - radius || pos.z < radius){
+            if(pos.z > mDimDown.z - radius || pos.z < mDimTop.z){
                 particle->changeDirZ();
             }
 

@@ -17,13 +17,13 @@ namespace mainScene {
     MainScene::MainScene(ci::ivec2  size)
     {
         
-        mFboSize =  ci::vec2(size.x - 50, size.y - 50);
+        mFboSize =  ci::vec2(size.x, size.y);
         
         //bounds
-        mBounds = ci::Rectf(0, 0, mFboSize.x, mFboSize.y);
+        mBounds = ci::Rectf(10, 10, mFboSize.x - 10, mFboSize.y - 10);
         mBoundColor = ci::ColorA(0.8, 0.8, 0.8, 1.0);
         
-        mParticleManager =  ParticleManager::create(ci::vec3(mFboSize.x, mFboSize.y, 0));
+        mParticleManager =  ParticleManager::create(ci::vec3(10, 10, 0), ci::vec3(mFboSize.x - 10, mFboSize.y - 10, 0));
      
         gl::Fbo::Format format = gl::Fbo::Format();
         format.setSamples(32);
@@ -38,6 +38,25 @@ namespace mainScene {
     void MainScene::toggleBounds()
     {
         mDrawBounds = !mDrawBounds;
+    }
+    
+    void MainScene::addParticle(physics::ParticleRef part)
+    {
+        mParticleManager->addParticle(part);
+    }
+    
+    physics::ParticleRef MainScene::getParticle(int index)
+    {
+        return mParticleManager->getParticle(index);
+    }
+    
+    void MainScene::setBkgColor(ci::ColorA mBkg){
+        mBkgColor = mBkg;
+        if(mBkgColor.r == 1){
+            mBoundColor = ci::ColorA(0, 0, 0, 1);
+        }else{
+            mBoundColor = ci::ColorA(1, 1, 1, 1);
+        }
     }
     
     void MainScene::createParticles()
@@ -118,13 +137,13 @@ namespace mainScene {
     {
         
         gl::ScopedFramebuffer scpFbo(mFbo);
-        
         gl::ScopedColor scpColor(mBkgColor);
+        gl::ScopedMatrices matrices;
+        
         gl::drawSolidRect(mFbo->getBounds());
         
         gl::ScopedViewport scpVp(ivec2(0), mFbo->getSize());
         
-        gl::ScopedMatrices matrices;
         gl::setMatricesWindow(mFbo->getSize(), true);
         gl::setModelMatrix(ci::mat4());
         
@@ -142,15 +161,13 @@ namespace mainScene {
         return mFbo->getColorTexture();
     }
     
-    void MainScene::draw()
-    {
-        mParticleManager->draw();
-    }
     
-    void MainScene::update()
+    void MainScene::setColorParticles(ci::ColorA col)
     {
-        mParticleManager->update();
+        for(auto & particle : mParticleManager->getParticles()){
+            particle->setColor(col);
+        }
     }
-    
+
     
 }

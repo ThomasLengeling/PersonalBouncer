@@ -25,10 +25,10 @@ namespace physics {
     class ParticleManager{
     public:
         
-        ParticleManager(ci::vec3 sizeSpace);
+        ParticleManager(ci::vec3 sizeTop, ci::vec3 sizeSpace);
         
-        static ParticleManagerRef create(ci::vec3 sizeSpace){
-            return std::make_shared<ParticleManager>(sizeSpace);
+        static ParticleManagerRef create(ci::vec3 sizeTop, ci::vec3 sizeSpace){
+            return std::make_shared<ParticleManager>(sizeTop, sizeSpace);
         }
         
         void draw();
@@ -43,13 +43,17 @@ namespace physics {
         
         bool sameSign(float a, float b);
         
+        ParticleRef getParticle(int index){return mParticleManager[index];}
+        
+        std::vector<ParticleRef> getParticles(){return mParticleManager;}
+        
     private:
         
         std::vector<ParticleRef> mParticleManager;
         
         ci::gl::BatchRef         mCircleBatch;
         
-        ci::vec3                 mDim;
-        
+        ci::vec3                 mDimTop;
+        ci::vec3                 mDimDown;
     };
 }

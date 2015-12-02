@@ -18,6 +18,7 @@ namespace physics {
     class Particle{
     public:
         Particle();
+        Particle(const Particle & p);
         
         static ParticleRef create(){return std::make_shared<Particle>();}
         

@@ -37,6 +37,8 @@ private:
     
     
     void resetBouncer();
+    void createParticle();
+    void drawParticle();
     
     bool               mCreateNewBall;
     bool               mDrawParticle;
@@ -46,5 +48,18 @@ private:
     ci::vec3           mNewDir;
     float              mNewAngle;
     float              mNewTam;
+    ci::vec2           mNewPos;
+    ci::ColorA         mNewColor;
+    
+    
+    //Colors
+    bool               mBlackWhite;
+    ci::ColorA         mBkgColor;
+    
+    
+    //pick the sound and times
+    int                      mSoundCounter;
+    std::vector<std::string> mSoundNames;
+    std::vector<int>         mSoundTimes;
 };
 
