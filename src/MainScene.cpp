@@ -69,18 +69,9 @@ namespace mainScene {
             part->setTravelTime(120.5);
             
             //vel
-            float vx = ci::randFloat(1.0, 3.5);
-            float vy = ci::randFloat(1.0, 3.5);
+            float vx = ci::randFloat(-3.5, 3.5);
+            float vy = ci::randFloat(-3.5, 3.5);
             part->setVel(ci::vec3(vx, vy, 0.0));
-            
-            //dir
-            int dx = ci::randInt(-1, 1);
-            int dy = ci::randInt(-1, 1);
-            if(dy == 0)
-                dy = -1;
-            if(dx == 0)
-                dx = 1;
-            part->setDir(ci::vec3(dx, dy, 0));
             
             //size
             float rand =  ci::randFloat(10, 20);
@@ -93,7 +84,6 @@ namespace mainScene {
             part->setColor(col);
             
             //set audio name file
-            //if(i == 0){
             part->setAudioSource(cinder::app::loadAsset("Linn Drum/LinnSnare03.wav"));
             
             mParticleManager->addParticle(part);
@@ -113,9 +103,6 @@ namespace mainScene {
         float vx = ci::randFloat(1.0, 3.5);
         float vy = ci::randFloat(1.0, 3.5);
         part->setVel(ci::vec3(vx, vy, 0.0));
-        
-        //dir
-        part->setDir(dir);
         
         //size
         part->setSize(tam * TAM_MAX);
@@ -147,13 +134,27 @@ namespace mainScene {
         gl::setMatricesWindow(mFbo->getSize(), true);
         gl::setModelMatrix(ci::mat4());
         
-        mParticleManager->draw();
+        mParticleManager->draw(mTime);
         
-        if(mDrawBounds){
-            gl::ScopedColor color(mBoundColor);
-            gl::drawStrokedRect(mBounds);//app::getWindowBounds());
+        if(mDrawBounds)
+        {
+        
+            {
+                gl::ScopedColor color(mBoundColor);
+                gl::drawStrokedRect(mBounds);//app::getWindowBounds());
+            }
+            
+            drawBorders();
         }
-       
+    }
+    
+    void MainScene::drawBorders()
+    {
+        gl::ScopedColor col(mBkgColor.r, mBkgColor.g, mBkgColor.b, 1.0);
+        gl::drawSolidRect(ci::Rectf(0, 0, mFbo->getSize().x, 10));
+        gl::drawSolidRect(ci::Rectf(0, 0, 10, mFbo->getSize().y));
+        gl::drawSolidRect(ci::Rectf(mFbo->getSize().x - 10, 0, mFbo->getSize().x, mFbo->getSize().y));
+        gl::drawSolidRect(ci::Rectf(0, mFbo->getSize().y - 10, mFbo->getSize().x, mFbo->getSize().y));
     }
     
     ci::gl::Texture2dRef MainScene::getFboTexture()

@@ -478,5 +478,12 @@ dependencies: \
   ../../../Cinder/include/cinder/audio/SamplePlayerNode.h \
   ../../../Cinder/include/cinder/audio/Source.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/SoundManager.h \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/Blocks/OSC/src/OscSender.h \
+  ../blocks/OSC/src/OscBundle.h ../blocks/OSC/src/OscMessage.h \
+  ../blocks/OSC/src/OscArg.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/Particle.h \
+  ../../../Cinder/include/cinder/Timeline.h \
+  ../../../Cinder/include/cinder/TimelineItem.h \
+  ../../../Cinder/include/cinder/Easing.h \
+  ../../../Cinder/include/cinder/Tween.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/Commun.h

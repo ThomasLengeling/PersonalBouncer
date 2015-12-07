@@ -15,9 +15,18 @@
 #include "poSoundManager/poSoundManager.h"
 #include "SoundManager.h"
 
+
+#include "OscSender.h"
+
 #include "Particle.h"
 
+
 namespace physics {
+    
+    struct Wall{
+        ci::vec3 startPos;
+        ci::vec3 endPos;
+    };
     
     class ParticleManager;
     typedef std::shared_ptr<ParticleManager> ParticleManagerRef;
@@ -31,8 +40,10 @@ namespace physics {
             return std::make_shared<ParticleManager>(sizeTop, sizeSpace);
         }
         
-        void draw();
+        void draw(double time);
         void update();
+        
+        void checkBounds(ParticleRef particle);
         
         void setWindowBounds();
         
@@ -47,6 +58,8 @@ namespace physics {
         
         std::vector<ParticleRef> getParticles(){return mParticleManager;}
         
+        void calcualteInitVel(ParticleRef particle);
+        
     private:
         
         std::vector<ParticleRef> mParticleManager;
@@ -55,5 +68,12 @@ namespace physics {
         
         ci::vec3                 mDimTop;
         ci::vec3                 mDimDown;
+        
+        ci::osc::Sender          sender;
+        
+        Wall                     mTopLeft;
+        Wall                     mTopRight;
+        Wall                     mBottomLeft;
+        Wall                     mBottomRight;
     };
 }

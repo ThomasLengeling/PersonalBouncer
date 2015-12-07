@@ -15,62 +15,67 @@ namespace physics{
         mSize  =  1.0f;
         mVel   =  ci::vec3(0, 0.1, 0);
         mColor =  ci::ColorA(0, 1, 0, 1);
-        mDir   =  ci::vec3(1, 1, 0);
-        mPrevDir = mDir;
         mAudioName = "LinnSnare01.wav";
         
         //seconds
         mTravelTime = 1.5;
         
         mVolumen = 0.5;
+        
+        mTime = 0;
+        mPrevTIme = 0;
+        
+        mId = 0;
+        
+        mTranslatePos = ci::vec2(mPos.x, mPos.y);
     }
     
     Particle::Particle(const Particle & p)
     {
-        mPos = p.mPos;
-        mVel = p.mVel;
-        mSize = p.mSize;
-        mColor = p.mColor;
-        mDir = p.mDir;
-        mAudioName = p.mAudioName;
-        mTravelTime = p.mTravelTime;
-        mVolumen = p.mVolumen;
-        mAudioSource = p.mAudioSource;
-        mAudioSpectral  =p.mAudioSpectral;
+        mPos    = p.mPos;
+        mVel    = p.mVel;
+        mSize   = p.mSize;
+        mColor  = p.mColor;
+        mAudioName     = p.mAudioName;
+        mTravelTime    = p.mTravelTime;
+        mVolumen       = p.mVolumen;
+        mAudioSource   = p.mAudioSource;
+        mAudioSpectral = p.mAudioSpectral;
+        mId            = p.mId;
     }
     
-    void Particle::update()
+    void Particle::update(double time)
     {
-        mPrevDir = mDir;
-        mPos += (mVel * mDir);
-    }
-    
-    
-    void Particle::calculateNewVel(double len)
-    {
-        ci::vec3 newVel = ci::vec3(len / mTravelTime) * (glm::sign(mVel * mDir));
-        ci::vec3 newVelDir = newVel +  mVel * mDir;
         
-        ci::app::console()<<newVel<<" "<<mVel<<" "<<glm::sign(mVel)<<" "<<newVelDir<<std::endl;
-        mVel = newVelDir;
+        mPos  += (mVel * ci::vec3(time));
+        
+        //ci::vec2 newPos = mTranslatePos;
+        //mPos = ci::vec3(newPos.x, newPos.y, 0);
+        mTime++;
     }
     
     void Particle::calculateNewVel(ci::vec3 len)
     {
-        ci::vec3 newVel = ci::vec3( (abs(len) - mSize) / ci::vec3(mTravelTime)); // -1 because we dont count the last velocity fo the collistion detection
+       
+        ci::vec3 newVel = ci::vec3( (abs(len)) / ci::vec3(mTravelTime))*ci::vec3(1.0) * glm::sign(mVel); // -1 because we dont count the last velocity fo the collistion detection
+
+        ci::app::console()<<"Counter: "<<mTime<<" - "<<mTravelTime<<" "<<mTravelTime/30.0f<<std::endl;
         
-        mVel = newVel;
+        mTime = 0;
+        mVel  = newVel;
+        
+        ci::vec2 startPos = ci::vec2(mPos.x, mPos.y);
+        ci::vec2 newPos = ci::vec2(len.x, len.y);
+        
+    //    ci::app::console()<<ci::vec2(mTranslatePos)<<" - "<<startPos<<" - "<<newPos<<std::endl;
+    //    ci::app::console()<<mTranslatePos.isComplete()<<std::endl;
+    
+    //   ci::app::timeline().apply( &mTranslatePos, newPos, float(mTravelTime)/30.0f, ci::EaseNone() );
     }
     
     void Particle::setPos(ci::vec3 pos){mPos = pos;}
     void Particle::setVel(ci::vec3 vel){mVel = vel;}
-    void Particle::setDir(ci::vec3 dir){
-        if(dir.x == 0)
-            dir.x = -1;
-        if(dir.y == 0)
-            dir.y = 1;
-        mDir = dir;
-    }
+    void Particle::setId(int index){ mId =  index;}
     
     void Particle::setColor(ci::ColorA col){mColor = col;}
     void Particle::setSize(float size){mSize = size;}
@@ -80,8 +85,8 @@ namespace physics{
     void Particle::setVolume(double volumen){mVolumen = volumen;}
     void Particle::setAudioSpectrall(const std::vector<float>  & mag){mAudioSpectral = mag;}
     
+    
     ci::vec3    Particle::getPos(){return mPos;}
-    ci::vec3    Particle::getDir(){return mDir;}
     ci::vec3    Particle::getPrevDir(){return mPrevDir;}
     ci::vec3    Particle::getVel(){return mVel;}
     ci::ColorA  Particle::getColor(){return mColor;}
@@ -91,19 +96,20 @@ namespace physics{
     cinder::DataSourceRef Particle::getAudioSource(){return mAudioSource;}
     float       Particle::getVolumen(){return mVolumen;}
     std::vector<float> Particle::getSpectral(){return mAudioSpectral;}
+    int         Particle::getId(){return mId;}
     
     void Particle::changeDirX()
     {
-        mDir.x = mDir.x * -1;
+        mVel.x = mVel.x * -1;
     }
     
     void Particle::changeDirY()
     {
-        mDir.y = mDir.y * -1;
+        mVel.y = mVel.y * -1;
     }
     
     void Particle::changeDirZ()
     {
-        mDir.z = mDir.z * -1;
+        mVel.z = mVel.z * -1;
     }
 }

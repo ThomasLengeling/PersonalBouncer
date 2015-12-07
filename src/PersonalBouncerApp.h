@@ -17,8 +17,6 @@
 
 #include "poSoundManager/poSoundManager.h"
 
-
-
 class PersonalBouncerApp : public ci::app::App {
 public:
     static void prepareSettings( Settings *settings );
@@ -55,6 +53,7 @@ private:
     //Colors
     bool               mBlackWhite;
     ci::ColorA         mBkgColor;
+    float              mBkgAlpha;
     
     
     //pick the sound and times

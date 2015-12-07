@@ -11,6 +11,6 @@
 
 //Define values
 
-#define TAM_MAX    23
+#define TAM_MAX    20
 
 #endif /* Commun_h */

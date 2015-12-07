@@ -12,6 +12,7 @@
 #include "cinder/gl/Texture.h"
 #include "cinder/Rand.h"
 
+
 #include "ParticleManager.h"
 #include "Commun.h"
 
@@ -48,6 +49,12 @@ namespace mainScene{
         
         void setColorParticles(ci::ColorA col);
         
+        void setTimer(float time){mTime = time;}
+        
+        void               drawBorders();
+        
+        physics::ParticleManagerRef getParticleManager(){return mParticleManager;}
+        
     private:
         
         physics::ParticleManagerRef mParticleManager;
@@ -63,5 +70,9 @@ namespace mainScene{
         ci::ColorA                  mBoundColor;
         
         bool                        mDrawBounds;
+        
+        double                      mTime;
+        
+        ci::osc::Sender             sender;
     };
 }

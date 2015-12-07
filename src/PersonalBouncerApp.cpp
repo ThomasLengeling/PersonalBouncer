@@ -9,9 +9,9 @@ using namespace mainScene;
 
 void PersonalBouncerApp::prepareSettings( Settings *settings )
 {
-    //settings->setHighDensityDisplayEnabled()
-    settings->setWindowSize( 1080, 720 );
-    //settings->setResizable(false);
+   // settings->setHighDensityDisplayEnabled(true);
+    settings->setWindowSize( 800, 800 );
+    settings->setResizable(false);
 
 }
 
@@ -25,12 +25,14 @@ void PersonalBouncerApp::setup()
     
     //true white
     //false black
-    mBlackWhite = false;
+    
+    mBkgAlpha = 0.1;
+    mBlackWhite = true;
     if(mBlackWhite){
-        mBkgColor = ci::ColorA(1.0, 1.0, 1.0, 1.0);
+        mBkgColor = ci::ColorA(1.0, 1.0, 1.0, mBkgAlpha);
         mNewColor = ci::ColorA(0.0, 0.0, 0.0, 1.0);
     }else{
-        mBkgColor = ci::ColorA(0.0, 0.0, 0.0, 1.0);
+        mBkgColor = ci::ColorA(0.0, 0.0, 0.0, mBkgAlpha);
         mNewColor = ci::ColorA(1.0, 1.0, 1.0, 1.0);
     }
     
@@ -40,19 +42,19 @@ void PersonalBouncerApp::setup()
     mMainScenePos   = ci::vec2(20, 20);
 
     mSoundNames.push_back("Performance01/LinnHat_C.wav");
-    mSoundTimes.push_back(30*2); //sec
+    mSoundTimes.push_back(30); //sec
     
     mSoundNames.push_back("Performance01/contrabasoon_0261.mp3");
-    mSoundTimes.push_back(20);
+    mSoundTimes.push_back(30);
     
     mSoundNames.push_back("Performance01/contrabasoon_0312.mp3");
-    mSoundTimes.push_back(30);
+    mSoundTimes.push_back(50);
     
     mSoundNames.push_back("Performance01/contrabasoon_0320.mp3");
     mSoundTimes.push_back(30);
     
     mSoundNames.push_back("Performance01/Trumpet_32.mp3");
-    mSoundTimes.push_back(30*1);
+    mSoundTimes.push_back(60);
     
     mSoundNames.push_back("Performance01/violin_017.mp3");
     mSoundTimes.push_back(30);
@@ -83,10 +85,10 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
         case '1':
             mBlackWhite = !mBlackWhite;
             if(mBlackWhite){
-                mBkgColor  = ci::ColorA(1, 1 , 1, 1);
+                mBkgColor  = ci::ColorA(1, 1, 1, mBkgAlpha);
                 mMainScene->setColorParticles(ci::ColorA(0, 0, 0, 1));
             }else{
-                mBkgColor  = ci::ColorA(0, 0, 0, 1);
+                mBkgColor  = ci::ColorA(0, 0, 0, mBkgAlpha);
                 mMainScene->setColorParticles(ci::ColorA(1, 1, 1, 1));
             }
             
@@ -154,8 +156,6 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
 void PersonalBouncerApp::update()
 {
     
-    createParticle();
-    
     {
         static const double timestep = 1.0 / 30.0;
     
@@ -171,6 +171,9 @@ void PersonalBouncerApp::update()
         while(accumulator >= timestep ) {
             accumulator -= timestep;
             
+           /// console()<< accumulator<<" "<<elapsed<<" "<<timestep<<std::endl;
+            
+            mMainScene->setTimer(elapsed*60);
             mMainScene->offScreenRender();
         }
     }
@@ -186,7 +189,6 @@ void PersonalBouncerApp::draw()
     ci::gl::enableAlphaBlending(true);
     
     gl::setMatricesWindow( toPixels( getWindowSize() ) );
-    
    
     // ci::gl::disableBlending();
     // ci::gl::enableAlphaBlending(true);
@@ -200,6 +202,8 @@ void PersonalBouncerApp::draw()
     }
     
      drawParticle();
+    
+     createParticle();
     
 }
 
@@ -217,15 +221,14 @@ void PersonalBouncerApp::drawParticle()
         gl::color(col);
         gl::drawSolidCircle(mNewPos, mNewTam * TAM_MAX, 64);
         
-        float radiusOffset = mNewTam * TAM_MAX + 0.4 * TAM_MAX;
+        float radiusOffset = mNewTam * TAM_MAX + 0.5 * TAM_MAX;
         mNewDir = vec3(cos(mNewAngle), sin(mNewAngle), 0);
         
         ci::vec2 centerDir = mNewPos + radiusOffset * vec2(mNewDir.x, mNewDir.y);
-        //console()<< mNewDir<<std::endl;
+        console()<< mNewDir<<std::endl;
         
         gl::drawLine(mNewPos, centerDir);
         gl::drawStrokedCircle(mNewPos, radiusOffset);
-        
         
         mCurrentSpectral = po::SoundManager::get()->getMagSpectrum(mCurrentTrackID);
         
@@ -236,20 +239,21 @@ void PersonalBouncerApp::drawParticle()
                 gl::ScopedMatrices mat;
                 gl::translate(mNewPos);
                 
+                gl::ScopedColor col(0.2, 0.2, 0.2, 1.0);
+                
                 for (int i = 0; i < bandCount; i++) {
                     
                     float angle = lmap<float>(i, 0, bandCount, 0, M_PI * 2);
                     float lvl = mCurrentSpectral[i];
                     
-                    float randIner = mNewTam * TAM_MAX*1.05;
+                    float randIner = mNewTam * TAM_MAX*1.15;
                     //float randOuter = mNewTam * TAM_MAX*1.05 + 10*logf(lvl);
                     
-                    float randOuter = mNewTam * TAM_MAX*1.05 + 375 * logf(lvl + 1.0);
+                    float randOuter = mNewTam * TAM_MAX*1.15 + 1300 * logf(lvl + 1.003);
                     
                     ci::vec2 circleInit = ci::vec2(randIner * cos(angle), randIner * sin(angle));
                     ci::vec2 circleEnd = ci::vec2(randOuter * cos(angle), randOuter * sin(angle));
                     
-                    gl::color(0, 0.8, 0.9);
                     gl::drawLine(circleInit, circleEnd);
                     
                 }
@@ -262,21 +266,34 @@ void PersonalBouncerApp::createParticle()
 {
     if(mCreateNewBall){
         
-        if(mNewDir.x > 0.01)
+        /*
+        if(mNewDir.x > 0.001)
             mNewDir.x = 1.0;
-        if(mNewDir.y > 0.01)
+        if(mNewDir.y > 0.001)
             mNewDir.y = 1.0;
         
-        if(mNewDir.x < -0.01){
+        if(mNewDir.x < -0.001){
             console()<<mNewDir.x<<std::endl;
             mNewDir.x = -1.0;
             console()<<mNewDir.x<<std::endl;
         }
-        if(mNewDir.y < -0.01)
+        if(mNewDir.y < -0.001)
             mNewDir.y = -1.0;
+        */
         
-        float vx = ci::randFloat(1.0, 3.5);
-        float vy = ci::randFloat(1.0, 3.5);
+        //float angle = atan2(pos.y - center.y, pos.x - center.x);
+        //ci::vec2 dir = ci::vec2(cos(angle), sin(angle));
+        
+        vec2 dirPos = ci::vec2(cos(mNewAngle), sin(mNewAngle))* vec2(1) + ci::vec2(mNewPos.x, mNewPos.y);
+        float angle = atan2(dirPos.y - mNewPos.y, dirPos.x - mNewPos.x);
+        ci::vec2 dir = ci::vec2(cos(angle), sin(angle));
+        
+        console()<<"dir "<<mNewDir<<std::endl;
+        
+        float vx = dir.x; //cos(mNewAngle);
+        float vy = dir.y; //sin(mNewAngle);
+        
+        console()<<"v "<<vx<<" "<<vy<<std::endl;
         
         ci::vec3 mNewVel = ci::vec3(vx, vy, 0);
         
@@ -290,7 +307,6 @@ void PersonalBouncerApp::createParticle()
         
         physics::ParticleRef par =  physics::Particle::create();
         
-        par->setDir(mNewDir);
         par->setTravelTime(mSoundTimes[mSoundCounter]);
         par->setSize(mNewTam * TAM_MAX);
         par->setVolume(mNewTam);
@@ -300,9 +316,12 @@ void PersonalBouncerApp::createParticle()
         par->setVel(mNewVel);
         par->setPos(vec3(mNewPos.x, mNewPos.y, 0));
         par->setAudioSpectrall(mCurrentSpectral);
+        par->setCounter(mSoundTimes[mSoundCounter]);
+        par->setStartPosition(vec2(mNewPos.x, mNewPos.y));
+        
+        mMainScene->getParticleManager()->calcualteInitVel(par);
         
         mMainScene->addParticle(par);
-        
         
         mSoundCounter++;
         
