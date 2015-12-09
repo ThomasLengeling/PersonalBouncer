@@ -13,4 +13,7 @@
 
 #define TAM_MAX    20
 
+#define COUNT_MIN  6
+#define COUNT_MAX  60
+
 #endif /* Commun_h */

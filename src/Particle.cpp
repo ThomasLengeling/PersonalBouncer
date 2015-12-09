@@ -59,7 +59,7 @@ namespace physics{
        
         ci::vec3 newVel = ci::vec3( (abs(len)) / ci::vec3(mTravelTime))*ci::vec3(1.0) * glm::sign(mVel); // -1 because we dont count the last velocity fo the collistion detection
 
-        ci::app::console()<<"Counter: "<<mTime<<" - "<<mTravelTime<<" "<<mTravelTime/30.0f<<std::endl;
+       ci::app::console()<<"Counter: "<<mTime<<" - "<<mTravelTime<<" "<<mTravelTime/30.0f<<std::endl;
         
         mTime = 0;
         mVel  = newVel;

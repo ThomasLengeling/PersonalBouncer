@@ -99,8 +99,8 @@ namespace physics {
             gl::drawSolidCircle(ci::vec2(newPoint), 20);
             gl::drawSolidCircle(ci::vec2(pos), 20);
             
-            ci::app::console()<<"Current pos "<<pos<<std::endl;
-            ci::app::console()<<"New Point"<<newPoint<<std::endl;
+            //ci::app::console()<<"Current pos "<<pos<<std::endl;
+            //ci::app::console()<<"New Point"<<newPoint<<std::endl;
             
             //vec2 distance = length(newPoint, pos);
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
@@ -152,8 +152,8 @@ namespace physics {
             gl::drawSolidCircle(ci::vec2(newPoint), 20);
             gl::drawSolidCircle(ci::vec2(pos), 20);
             
-            ci::app::console()<<"Current pos "<<pos<<std::endl;
-            ci::app::console()<<"New Point"<<newPoint<<std::endl;
+            //ci::app::console()<<"Current pos "<<pos<<std::endl;
+            //ci::app::console()<<"New Point"<<newPoint<<std::endl;
             
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
@@ -200,8 +200,8 @@ namespace physics {
             gl::drawSolidCircle(ci::vec2(newPoint), 20);
             gl::drawSolidCircle(ci::vec2(pos), 20);
             
-            ci::app::console()<<"Current pos "<<pos<<std::endl;
-            ci::app::console()<<"New Point"<<newPoint<<std::endl;
+            //ci::app::console()<<"Current pos "<<pos<<std::endl;
+            //ci::app::console()<<"New Point"<<newPoint<<std::endl;
             
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
@@ -230,7 +230,7 @@ namespace physics {
             ci::vec3 newPos = pos  + (vel * ci::vec3(10000));
             ci::vec3 newPoint;
            
-            ci::app::console()<<"Current pos "<<pos<<std::endl;
+            //ci::app::console()<<"Current pos "<<pos<<std::endl;
            
             ci::vec3 newPoint01 = intersect(pos, newPos, ci::vec3(mDimTop.x + radius, mDimTop.y   + radius, 0), ci::vec3(mDimTop.x  + radius, mDimDown.y - radius, 0));
             ci::vec3 newPoint02 = intersect(pos, newPos, ci::vec3(mDimDown.x - radius, mDimTop.y  + radius, 0), ci::vec3(mDimDown.x - radius, mDimDown.y - radius, 0));
@@ -248,8 +248,8 @@ namespace physics {
             gl::drawSolidCircle(ci::vec2(newPoint), 20);
             gl::drawSolidCircle(ci::vec2(pos), 20);
            
-           ci::app::console()<<"Current pos "<<pos<<std::endl;
-           ci::app::console()<<"New Point"<<newPoint<<std::endl;
+            //ci::app::console()<<"Current pos "<<pos<<std::endl;
+            //ci::app::console()<<"New Point"<<newPoint<<std::endl;
            
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));

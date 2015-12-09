@@ -488,4 +488,7 @@ dependencies: \
   ../../../Cinder/include/cinder/TimelineItem.h \
   ../../../Cinder/include/cinder/Easing.h \
   ../../../Cinder/include/cinder/Tween.h \
-  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/Commun.h
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/Commun.h \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/PowerMate.h \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/Blocks/OSC/src/OscListener.h \
+  ../../../Cinder/include/cinder/Function.h

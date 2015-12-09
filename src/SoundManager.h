@@ -15,5 +15,6 @@ public:
     static cinder::DataSourceRef getDrumAudio(std::string name );
     static cinder::DataSourceRef getKickAudio(std::string name );
 private:
+
 };
 

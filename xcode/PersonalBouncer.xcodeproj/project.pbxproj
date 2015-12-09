@@ -632,6 +632,7 @@
 		E245460E1C11F384002B8526 /* OscMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscMessage.h; sourceTree = "<group>"; };
 		E245460F1C11F384002B8526 /* OscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscSender.cpp; sourceTree = "<group>"; };
 		E24546101C11F384002B8526 /* OscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscSender.h; sourceTree = "<group>"; };
+		E25466EB1C164BC100408254 /* PowerMate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PowerMate.h; path = ../src/PowerMate.h; sourceTree = "<group>"; };
 		E26716B11C0CE558006BD92B /* Commun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Commun.h; path = ../src/Commun.h; sourceTree = "<group>"; };
 		E26DB1B2799E4A2EA23EDCFB /* btMultiBodySolverConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = btMultiBodySolverConstraint.h; path = "../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletDynamics/FeatherStone/btMultiBodySolverConstraint.h"; sourceTree = "<group>"; };
 		E2995300996F4359B791AB10 /* btSoftRigidDynamicsWorld.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = btSoftRigidDynamicsWorld.cpp; path = "../../../Cinder/blocks/Cinder-Bullet3D/src/BulletPhysics/BulletSoftBody/btSoftRigidDynamicsWorld.cpp"; sourceTree = "<group>"; };
@@ -938,6 +939,7 @@
 				E200DD151C0AC2BA001EA18C /* SoundManager.cpp */,
 				E200DD161C0AC2BA001EA18C /* SoundManager.h */,
 				E26716B11C0CE558006BD92B /* Commun.h */,
+				E25466EB1C164BC100408254 /* PowerMate.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
