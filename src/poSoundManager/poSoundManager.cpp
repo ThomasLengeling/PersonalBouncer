@@ -54,7 +54,7 @@ namespace po {
 	void SoundManager::setup()
 	{
         auto context = ci::audio::Context::master();
-        mMasterGain = context->makeNode(new ci::audio::GainNode(0.03));
+        mMasterGain = context->makeNode(new ci::audio::GainNode(1.0)); //0.03
         
         // debug print all devices to console
         ci::app::console() << ci::audio::Device::printDevicesToString() << std::endl;
