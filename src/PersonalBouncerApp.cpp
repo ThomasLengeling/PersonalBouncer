@@ -51,7 +51,7 @@ void PersonalBouncerApp::setup()
     
     mNewPos = getWindowCenter();
     
-    mTimeCounter = 10;
+    mTimeCounter = COUNT_DEFAULT;
     
     
     float DEG_TO_RAD = 	0.01745329238474369f;
@@ -252,6 +252,13 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
             }
             console()<<"count "<<mTimeCounter<<std::endl;
             break;
+        case '4':
+            mBkgAlpha = 0.0;
+            break;
+        case '5':
+            mBkgAlpha = 1.0;
+            break;
+            
         case 'q': //rotate left
             mDrawParticle = true;
             mNewAngle -= 0.1;
@@ -326,6 +333,8 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
 void PersonalBouncerApp::update()
 {
     oscListener();
+    
+    po::SoundManager::get()->update();
     
     if(mVolumenChanged){
         if(getElapsedFrames() % 20 == 0){
@@ -599,7 +608,7 @@ void PersonalBouncerApp::oscListener()
                             
                             mPM->addSensitivity(diffPress);
                             if(mPM->isTurnActivated()){
-                                mNewTam += diffPress * 0.01;
+                                mNewTam += diffPress * 0.1;
                                 
                                 if(mNewTam > 1.0){
                                     mNewTam = 1.0;
@@ -615,7 +624,7 @@ void PersonalBouncerApp::oscListener()
                                 mDrawParticle = true;
                                 mVolumenChanged = true;
                                 
-                                console()<<"new Volume"<<mNewTam<<std::endl;
+                                console()<<"new Volume "<<mNewTam<<std::endl;
                             }
                     
                         }
@@ -625,18 +634,30 @@ void PersonalBouncerApp::oscListener()
                             
                             mNewAngle += diff * 0.1;
                         }
+                        mDrawParticle = true;
                     }
                     
                 }
                 else if( index == 2){
-                    
+                    mDrawParticle = true;
                     if(mPM->isPressed()){
                         
                     }else{
                         int diff = mPM->getTurnValue() - prevTurnValue;
                         if( diff == 1 || diff == -1){
                             mTimeCounter += diff;
+                            
+                            if(mTimeCounter < COUNT_MIN){
+                                mTimeCounter = COUNT_MIN;
+                            }
+                        
+                  
+                            if(mTimeCounter > COUNT_MAX){
+                                mTimeCounter = COUNT_MAX;
+                            }
+                            
                         }
+                        mDrawParticle = true;
                     }
                 }
             }
@@ -698,7 +719,7 @@ void PersonalBouncerApp::resetBouncer()
     mNewTam = 0.5;
     mNewPos =  getWindowCenter();
     mNewAngle = 0;
-    mTimeCounter = COUNT_MIN;
+    mTimeCounter = COUNT_DEFAULT;
     mNewDir   = vec3(0);
     mCreateNewBall = false;
     mDrawParticle  = false;

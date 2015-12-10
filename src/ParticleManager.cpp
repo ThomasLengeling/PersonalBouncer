@@ -61,7 +61,7 @@ namespace physics {
         float radius = particle->getSize()/2.0;
 
         
-        gl::ScopedColor col(ci::ColorA(0.8, 0.3, 0.3, 0.5));
+        gl::ScopedColor col(ci::ColorA(0.8, 0.3, 0.3, 0.4));
         
         //if(particle->isTransitionComplete()){
             
