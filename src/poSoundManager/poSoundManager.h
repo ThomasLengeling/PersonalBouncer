@@ -42,6 +42,10 @@
 #include "cinder/audio/Param.h"
 #include "cinder/audio/PanNode.h"
 #include "cinder/audio/SamplePlayerNode.h"
+#include "cinder/audio/ChannelRouterNode.h"
+
+#define NUM_OUTPUS 10
+
 
 namespace po {
 	class SoundManager;
@@ -58,10 +62,10 @@ namespace po {
 		void update();
 		
 		//	Play data source
-        unsigned int play(ci::DataSourceRef dataSource, unsigned int group=0, bool loop = false);
+        unsigned int play(ci::DataSourceRef dataSource, int channel, unsigned int group=0, bool loop = false);
 		
 		//	Play audio buffer
-        unsigned int play(ci::audio::BufferRef buffer, unsigned int group=0, bool loop = false);
+        unsigned int play(ci::audio::BufferRef buffer, int channel, unsigned int group=0, bool loop = false);
 		
 		//	Stop
 		void stop(unsigned int trackID);
@@ -100,36 +104,46 @@ namespace po {
             ci::audio::MonitorNodeRef monitor;
             ci::audio::Pan2dNodeRef pan;
             ci::audio::MonitorSpectralNodeRef	mMonitorSpectralNode;
+            ci::audio::ChannelRouterNodeRef	mChannelRouterNode;
 			
-            Track(ci::audio::BufferPlayerNodeRef bufferPlayer)
+            Track(ci::audio::BufferPlayerNodeRef bufferPlayer, int channel)
             : bufferPlayer(bufferPlayer)
             {
                 auto context = ci::audio::Context::master();
                 
                 gain    = context->makeNode(new ci::audio::GainNode(1.0));
                 monitor = context->makeNode(new ci::audio::MonitorNode);
-				pan     = context->makeNode(new ci::audio::Pan2dNode());
+                pan     = context->makeNode(new ci::audio::Pan2dNode());
                 
-				pan->setStereoInputModeEnabled();
+                //pan->setStereoInputModeEnabled();
                 
                 auto monitorFormat   = ci::audio::MonitorSpectralNode::Format().fftSize(64).windowSize(1024);
                 mMonitorSpectralNode = context->makeNode(new ci::audio::MonitorSpectralNode(monitorFormat));
+                
+                
+                mChannelRouterNode = context->makeNode( new ci::audio::ChannelRouterNode( ci::audio::Node::Format().channels( NUM_OUTPUS ) ) );
+                mChannelRouterNode->route(0, channel);//ci::randInt(0, 4));
+                
+                ci::app::console()<<"made route"<<std::endl;
             }
             
             bool isFinished() {
                 return (!bufferPlayer->isEnabled() && !bufferPlayer->isLoopEnabled());
             }
             
-            void connect(ci::audio::GainNodeRef masterGain) {
+            void connect(ci::audio::GainNodeRef masterGain, int channel) {
                 auto context = ci::audio::Context::master();
-                bufferPlayer >> monitor >>  mMonitorSpectralNode >> gain >> pan >> masterGain >> context->getOutput();
+                
+                ci::app::console()<<"channel "<<channel<<std::endl;
+                bufferPlayer >> mMonitorSpectralNode >> monitor >>  gain >> mChannelRouterNode->route(0, channel) >> masterGain >> context->getOutput();
             }
             
             void disconnect() {
                 gain->disconnectAll();
                 monitor->disconnectAll();
-                pan->disconnectAll();
+                //pan->disconnectAll();
                 bufferPlayer->disconnectAll();
+                mChannelRouterNode->disconnectAll();
                 mMonitorSpectralNode->disconnectAll();
             }
         };

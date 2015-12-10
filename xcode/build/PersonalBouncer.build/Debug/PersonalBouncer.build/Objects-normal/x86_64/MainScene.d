@@ -477,6 +477,7 @@ dependencies: \
   ../../../Cinder/include/cinder/audio/PanNode.h \
   ../../../Cinder/include/cinder/audio/SamplePlayerNode.h \
   ../../../Cinder/include/cinder/audio/Source.h \
+  ../../../Cinder/include/cinder/audio/ChannelRouterNode.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/SoundManager.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/Blocks/OSC/src/OscSender.h \
   ../blocks/OSC/src/OscBundle.h ../blocks/OSC/src/OscMessage.h \

@@ -472,4 +472,5 @@ dependencies: \
   ../../../Cinder/include/cinder/audio/dsp/RingBuffer.h \
   ../../../Cinder/include/cinder/audio/PanNode.h \
   ../../../Cinder/include/cinder/audio/SamplePlayerNode.h \
-  ../../../Cinder/include/cinder/audio/Source.h
+  ../../../Cinder/include/cinder/audio/Source.h \
+  ../../../Cinder/include/cinder/audio/ChannelRouterNode.h

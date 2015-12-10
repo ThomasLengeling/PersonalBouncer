@@ -197,12 +197,12 @@ void PersonalBouncerApp::setupOSC()
     console()<<"setup OSC"<<std::endl;
     
     try{
-        mListener.setup( 13200 );
+        mListener.setup( 13210 );
     }catch(std::exception & e){
         console()<<e.what()<<std::endl;
     }
     
-    mSender.setup("127.0.0.1", 12100, true );
+    mSender.setup("127.0.0.1", 12110, true );
 }
 
 void PersonalBouncerApp::mouseDown( MouseEvent event )
@@ -274,7 +274,7 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
         case 'a':  //press down
         {
             mDrawParticle = true;
-            mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile));
+            mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile), 1);
             po::SoundManager::get()->setGain(mCurrentTrackID, 1.0);
             
             console()<<"DOWN PRESS DOWN"<<std::endl;
@@ -292,7 +292,7 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
                 mNewTam -= 0.1;
             }
             
-            mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile));
+            mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile), 1);
             po::SoundManager::get()->setGain(mCurrentTrackID, mNewTam);
             
             console()<<"PRESS DOWN LEFT"<<std::endl;
@@ -305,7 +305,7 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
                 mNewTam += 0.1;
             }
             
-            mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile));
+            mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile), 1);
             po::SoundManager::get()->setGain(mCurrentTrackID, mNewTam);
             
             console()<<"PRESS DOWN RIGHT"<<std::endl;
@@ -576,7 +576,7 @@ void PersonalBouncerApp::oscListener()
                                 std::string mFileName =  mAudioFiles.at(mCurrentSoundLib).mFiles.at(mSoundCounter);
     
                                 mCurrentAudioFile = mFileParent+"/"+mFileName;
-                                mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile));
+                                mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile), 1);
                                 po::SoundManager::get()->setGain(mCurrentTrackID, 1.0);
                                 
                                 mCurrentColor = mAudioFiles.at(mCurrentSoundLib).mColors.at(mSoundCounter);
@@ -618,7 +618,7 @@ void PersonalBouncerApp::oscListener()
                                     mNewTam = 0.0;
                                 }
                                 
-                                mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile));
+                                mCurrentTrackID = po::SoundManager::get()->play(loadAsset(mCurrentAudioFile), 1);
                                 po::SoundManager::get()->setGain(mCurrentTrackID, mNewTam);
                                 
                                 mDrawParticle = true;

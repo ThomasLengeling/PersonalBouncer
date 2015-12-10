@@ -106,7 +106,8 @@ namespace physics {
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
             
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+            //right
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 8);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
             osc::Message message;
@@ -157,7 +158,9 @@ namespace physics {
             
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+            
+            //left
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 4);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
             osc::Message message;
@@ -206,7 +209,8 @@ namespace physics {
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
             
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+            //DOWN
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 3);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
             osc::Message message;
@@ -251,9 +255,12 @@ namespace physics {
             //ci::app::console()<<"Current pos "<<pos<<std::endl;
             //ci::app::console()<<"New Point"<<newPoint<<std::endl;
            
+           
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource());
+           
+            //UP
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 6);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
             

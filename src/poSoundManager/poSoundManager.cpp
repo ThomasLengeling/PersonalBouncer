@@ -53,8 +53,22 @@ namespace po {
 	
 	void SoundManager::setup()
 	{
-		auto context = ci::audio::Context::master();
-        mMasterGain = context->makeNode(new ci::audio::GainNode(1.0));
+        auto context = ci::audio::Context::master();
+        mMasterGain = context->makeNode(new ci::audio::GainNode(0.03));
+        
+        // debug print all devices to console
+        ci::app::console() << ci::audio::Device::printDevicesToString() << std::endl;
+        
+        ci::audio::DeviceRef deviceWithMaxOutputs;
+        
+        for( const auto &dev : ci::audio::Device::getDevices() ) {
+            if( ! deviceWithMaxOutputs || deviceWithMaxOutputs->getNumOutputChannels() < dev->getNumOutputChannels() )
+                deviceWithMaxOutputs = dev;
+        }
+        
+        ci::app::console()<<"load outputs "<<deviceWithMaxOutputs->getNumOutputChannels()<<" "<<deviceWithMaxOutputs->getName()<< std::endl;
+        auto multichannelOutputDeviceNode = context->createOutputDeviceNode( deviceWithMaxOutputs, ci::audio::Node::Format().channels( NUM_OUTPUS ) );
+        context->setOutput(multichannelOutputDeviceNode);
         context->enable();
 	}
     
@@ -102,15 +116,15 @@ namespace po {
 	}
 	
     
-    unsigned int SoundManager::play(ci::DataSourceRef ref, unsigned int group, bool loop)
+    unsigned int SoundManager::play(ci::DataSourceRef ref, int channel, unsigned int group, bool loop)
 	{
         ci::audio::SourceFileRef sourceFile = ci::audio::SourceFile::create(ref);
         ci::audio::BufferRef buffer = sourceFile->loadBuffer();
-		return play(buffer, group, loop);
+		return play(buffer, channel, group, loop);
 	}
 	
     
-    unsigned int SoundManager::play(ci::audio::BufferRef buffer, unsigned int group, bool loop)
+    unsigned int SoundManager::play(ci::audio::BufferRef buffer, int channel, unsigned int group, bool loop)
     {
         auto context = ci::audio::Context::master();
         
@@ -122,10 +136,10 @@ namespace po {
         }
         
         //  Create Track
-        TrackRef t(new Track(bufferPlayer));
+        TrackRef t(new Track(bufferPlayer, channel));
 		
         //  Connect track w/Master Gain Node
-        t->connect(mMasterGain);
+        t->connect(mMasterGain, channel);
         
         //Save track
         mGroup[mTrackID]    = group;
@@ -205,7 +219,7 @@ namespace po {
 	void SoundManager::setGain(unsigned int trackID, float volume)
 	{
 		if (mTracks.find(trackID) != mTracks.end()) {
-			//mTracks[trackID]->gain->getParam()->applyRamp(volume, RAMP_TIME, ci::audio::Param::Options().rampFn(&ci::audio::rampInQuad));
+		//	mTracks[trackID]->gain->getParam()->applyRamp(volume, RAMP_TIME, ci::audio::Param::Options().rampFn(&ci::audio::rampInQuad));
             
             mTracks[trackID]->gain->setValue(volume);
 		}
