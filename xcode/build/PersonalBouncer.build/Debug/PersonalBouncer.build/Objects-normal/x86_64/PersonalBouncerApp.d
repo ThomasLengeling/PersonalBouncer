@@ -480,6 +480,7 @@ dependencies: \
   ../../../Cinder/include/cinder/audio/SamplePlayerNode.h \
   ../../../Cinder/include/cinder/audio/Source.h \
   ../../../Cinder/include/cinder/audio/ChannelRouterNode.h \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/poSoundManager/../Commun.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/SoundManager.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/Blocks/OSC/src/OscSender.h \
   ../blocks/OSC/src/OscBundle.h ../blocks/OSC/src/OscMessage.h \
@@ -489,7 +490,6 @@ dependencies: \
   ../../../Cinder/include/cinder/TimelineItem.h \
   ../../../Cinder/include/cinder/Easing.h \
   ../../../Cinder/include/cinder/Tween.h \
-  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/Commun.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/PowerMate.h \
   /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/Blocks/OSC/src/OscListener.h \
   ../../../Cinder/include/cinder/Function.h

@@ -15,11 +15,27 @@
 #include "poSoundManager/poSoundManager.h"
 #include "SoundManager.h"
 
+#include "Commun.h"
 
 #include "OscSender.h"
 
 #include "Particle.h"
 
+
+#define  SURROUND 0
+
+
+#ifndef SURROUND 1
+    const int leftChannel = 4;
+    const int downChannel = 3;
+    const int rightChannel = 8;
+    const int upChannel = 6;
+#else
+    const int leftChannel = 0;
+    const int downChannel = 0;
+    const int rightChannel = 0;
+    const int upChannel = 0;
+#endif
 
 namespace physics {
     

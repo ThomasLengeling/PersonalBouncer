@@ -12,6 +12,8 @@ namespace physics {
     
     using namespace ci;
     
+    
+    
     ParticleManager::ParticleManager(ci::vec3 sizeTop, ci::vec3 sizeDown)
     {
         auto lambert = gl::ShaderDef().lambert().color();
@@ -107,7 +109,7 @@ namespace physics {
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
             
             //right
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 8);
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), rightChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
             osc::Message message;
@@ -160,8 +162,9 @@ namespace physics {
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
             
             //left
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 4);
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), leftChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
+      
             
             osc::Message message;
             message.setAddress("/left");
@@ -210,7 +213,7 @@ namespace physics {
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
             
             //DOWN
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 3);
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), downChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
             osc::Message message;
@@ -260,7 +263,7 @@ namespace physics {
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
            
             //UP
-            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), 6);
+            unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), upChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
             

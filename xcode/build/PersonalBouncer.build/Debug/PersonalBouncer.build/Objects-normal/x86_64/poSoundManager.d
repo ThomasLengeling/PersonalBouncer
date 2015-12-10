@@ -473,4 +473,5 @@ dependencies: \
   ../../../Cinder/include/cinder/audio/PanNode.h \
   ../../../Cinder/include/cinder/audio/SamplePlayerNode.h \
   ../../../Cinder/include/cinder/audio/Source.h \
-  ../../../Cinder/include/cinder/audio/ChannelRouterNode.h
+  ../../../Cinder/include/cinder/audio/ChannelRouterNode.h \
+  /Users/tom/Documents/Programming/Cinder/media_lab/PersonalBouncer/src/poSoundManager/../Commun.h

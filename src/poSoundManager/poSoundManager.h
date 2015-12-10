@@ -43,8 +43,9 @@
 #include "cinder/audio/PanNode.h"
 #include "cinder/audio/SamplePlayerNode.h"
 #include "cinder/audio/ChannelRouterNode.h"
+#include "../Commun.h"
 
-#define NUM_OUTPUS 10
+
 
 
 namespace po {
