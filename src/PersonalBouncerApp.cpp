@@ -327,6 +327,9 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
             mSender.sendMessage(message);
         }
             break;
+        case ' ':
+            cleaAll();
+            break;
     }
 }
 
@@ -416,13 +419,11 @@ void PersonalBouncerApp::drawParticle()
         
         gl::drawLine(mNewPos, centerDir);
         gl::drawStrokedCircle(mNewPos, radiusOffset);
-        
     
         //mTimeCounter
         {
             //(float x,float y,float deg,float rad,float w)
             gl::ScopedColor col(ci::ColorA(0.2, 0.2, 0.2, 0.7));
-          
 
             gl::ScopedMatrices mat;
             gl::translate(mNewPos);
@@ -735,6 +736,11 @@ void PersonalBouncerApp::drawArc(float x,float y,float deg,float rad, float w, f
         vert.vertex(cosLUT[i]*(rad + trans + w) + x, sinLUT[i]*(rad + trans + w) + y);
     }
     vert.draw();
+}
+
+void PersonalBouncerApp::cleaAll()
+{
+    mMainScene->getParticleManager()->clean();
 }
 
 void PersonalBouncerApp::cleanup()

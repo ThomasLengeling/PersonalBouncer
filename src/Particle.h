@@ -63,6 +63,10 @@ namespace physics {
         void changeDirX();
         void changeDirY();
         void changeDirZ();
+        
+        bool isCompleteTime(){
+            return (mTime == (int)mTravelTime) ? true : false;
+        }
     
         
     private:

@@ -25,7 +25,6 @@ namespace physics {
         
         CI_LOG_I(mDimDown<<" "<<mDimDown);
         
-        sender.setup("127.0.0.1", 12001, false );
     }
     
     void ParticleManager::update()
@@ -40,8 +39,6 @@ namespace physics {
             
             particle->update(time);
             vec3 pos     = particle->getPos();
-            vec3 vel     = particle->getVel();
-            float radius = round(particle->getSize()/2.0);
             
             {
                 gl::ScopedMatrices mat;
@@ -66,7 +63,6 @@ namespace physics {
         gl::ScopedColor col(ci::ColorA(0.8, 0.3, 0.3, 0.4));
         
         //if(particle->isTransitionComplete()){
-            
         
         if(pos.x > mDimDown.x - radius){
             
@@ -111,13 +107,6 @@ namespace physics {
             //right
             unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), rightChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
-            
-            osc::Message message;
-            message.setAddress("/right");
-            message.addIntArg(particle->getId());
-            message.addIntArg(particle->getTravelTime());
-            message.addIntArg(particle->getPos().x / mDimDown.x);
-            sender.sendMessage(message);
             
             CI_LOG_V("RIGHT "<< particle->getTravelTime()<<" "<<particle->getPos().x / mDimDown.x);
         }
@@ -164,14 +153,7 @@ namespace physics {
             //left
             unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), leftChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
-      
-            
-            osc::Message message;
-            message.setAddress("/left");
-            message.addIntArg(particle->getId());
-            message.addFloatArg( particle->getTravelTime());
-            message.addFloatArg( particle->getPos().x / mDimDown.x);
-            sender.sendMessage(message);
+
             
             CI_LOG_V("LEFT "<< particle->getTravelTime()<<" "<<particle->getPos().x / mDimDown.x);
         }
@@ -216,12 +198,6 @@ namespace physics {
             unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), downChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
             
-            osc::Message message;
-            message.setAddress("/top");
-            message.addIntArg(particle->getId());
-            message.addFloatArg( particle->getTravelTime());
-            message.addFloatArg( particle->getPos().y / mDimDown.x);
-            sender.sendMessage(message);
         }
        else if(pos.y < mDimTop.y + radius){
             
@@ -257,22 +233,14 @@ namespace physics {
            
             //ci::app::console()<<"Current pos "<<pos<<std::endl;
             //ci::app::console()<<"New Point"<<newPoint<<std::endl;
-           
-           
+    
             particle->calculateNewVel( ci::vec3(newPoint.x - pos.x, newPoint.y - pos.y, 0));
             //particle->calculateNewVel( ci::vec3(newPoint.x, newPoint.y, 0));
            
             //UP
             unsigned int trackID = po::SoundManager::get()->play(particle->getAudioSource(), upChannel);
             po::SoundManager::get()->setGain(trackID, particle->getVolumen());
-            
-            
-            osc::Message message;
-            message.setAddress("/bottom");
-            message.addIntArg(particle->getId());
-            message.addFloatArg( particle->getTravelTime());
-            message.addFloatArg( particle->getPos().y / mDimDown.x);
-            sender.sendMessage(message);
+           
         }
         
         if(pos.z > mDimDown.z - radius || pos.z < mDimTop.z){

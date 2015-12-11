@@ -39,11 +39,6 @@
 
 namespace physics {
     
-    struct Wall{
-        ci::vec3 startPos;
-        ci::vec3 endPos;
-    };
-    
     class ParticleManager;
     typedef std::shared_ptr<ParticleManager> ParticleManagerRef;
     
@@ -76,6 +71,8 @@ namespace physics {
         
         void calcualteInitVel(ParticleRef particle);
         
+        void clean(){mParticleManager.clear();}
+        
     private:
         
         std::vector<ParticleRef> mParticleManager;
@@ -84,12 +81,6 @@ namespace physics {
         
         ci::vec3                 mDimTop;
         ci::vec3                 mDimDown;
-        
-        ci::osc::Sender          sender;
-        
-        Wall                     mTopLeft;
-        Wall                     mTopRight;
-        Wall                     mBottomLeft;
-        Wall                     mBottomRight;
+    
     };
 }

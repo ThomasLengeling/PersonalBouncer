@@ -100,6 +100,8 @@ private:
     float              mBkgAlpha;
     
     
+    void cleaAll();
+    
     //Power Mate
     void setupPowerMate();
     std::vector<PowerMateRef> mPowerMates;
