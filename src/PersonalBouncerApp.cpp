@@ -89,20 +89,20 @@ void PersonalBouncerApp::setupAudios()
     std::vector<ci::ColorA>   mEndColors;
     
     mAudioFolder.push_back("BASS");
-    mStartColors.push_back(ci::ColorA(0, 0, 0.2, 1));
+    mStartColors.push_back(ci::ColorA(0, 0, 0.3, 1));
     mEndColors.push_back(ci::ColorA(0, 0, 1, 1));
     
     mAudioFolder.push_back("DRUM KITS"); //rojas
-    mStartColors.push_back(ci::ColorA(0.2, 0, 0, 1));
+    mStartColors.push_back(ci::ColorA(0.3, 0, 0, 1));
     mEndColors.push_back(ci::ColorA(1, 0, 0, 1));
     
     mAudioFolder.push_back("LEAD"); //amarrillos
-    mStartColors.push_back(ci::ColorA(0.3, 0.3, 0, 1));
+    mStartColors.push_back(ci::ColorA(0.25, 0.4, 0, 1));
     mEndColors.push_back(ci::ColorA(1, 1, 0, 1));
     
     mAudioFolder.push_back("PAD"); //aqua
-    mStartColors.push_back(ci::ColorA(0, 0.3, 0.3, 1));
-    mEndColors.push_back(ci::ColorA(0, 1, 1, 1));
+    mStartColors.push_back(ci::ColorA(0, 0.3, 0.4, 1));
+    mEndColors.push_back(ci::ColorA(0, 0.8, 1.0, 1));
     
     int i = 0;
     for(auto & name : mAudioFolder){
@@ -253,10 +253,10 @@ void PersonalBouncerApp::keyDown(KeyEvent event)
             console()<<"count "<<mTimeCounter<<std::endl;
             break;
         case '4':
-            mBkgAlpha = 0.0;
+            mBkgColor.a = 0.0;
             break;
         case '5':
-            mBkgAlpha = 1.0;
+            mBkgColor.a = 1.0;
             break;
             
         case 'q': //rotate left
@@ -412,7 +412,7 @@ void PersonalBouncerApp::drawParticle()
         float radiusOffset = mNewTam * TAM_MAX + 0.7 * TAM_MAX;
         mNewDir = vec3(cos(mNewAngle), sin(mNewAngle), 0);
         
-        ci::vec2 centerDir = mNewPos + vec2(radiusOffset + 0.3 * TAM_MAX) * vec2(mNewDir.x, mNewDir.y);
+        ci::vec2 centerDir = mNewPos + vec2(radiusOffset + 0.35 * TAM_MAX) * vec2(mNewDir.x, mNewDir.y);
         
         gl::drawLine(mNewPos, centerDir);
         gl::drawStrokedCircle(mNewPos, radiusOffset);
@@ -421,7 +421,7 @@ void PersonalBouncerApp::drawParticle()
         //mTimeCounter
         {
             //(float x,float y,float deg,float rad,float w)
-            gl::ScopedColor col(ci::ColorA(0, 0, 0, 0.4));
+            gl::ScopedColor col(ci::ColorA(0.2, 0.2, 0.2, 0.7));
           
 
             gl::ScopedMatrices mat;
@@ -431,7 +431,7 @@ void PersonalBouncerApp::drawParticle()
             float rad = lmap<float>(mTimeCounter, COUNT_MIN, COUNT_MAX, 30, 360);
             
             //drawArc(mNewPos.x, mNewPos.y, rad, mNewTam * TAM_MAX  + 0.25 * TAM_MAX, 10, mNewAngle);
-            drawArc(0, 0, rad, mNewTam * TAM_MAX  + 0.25 * TAM_MAX, 11, mNewAngle);
+            drawArc(0, 0, rad, mNewTam * TAM_MAX  + 0.15 * TAM_MAX, 11, mNewAngle);
         }
         
         mCurrentSpectral = po::SoundManager::get()->getMagSpectrum(mCurrentTrackID);
@@ -450,10 +450,10 @@ void PersonalBouncerApp::drawParticle()
                     float angle = lmap<float>(i, 0, bandCount, 0, M_PI * 2);
                     float lvl = mCurrentSpectral[i];
                     
-                    float randIner = mNewTam * TAM_MAX*1.15;
+                    float randIner = mNewTam * TAM_MAX*1.2;
                     //float randOuter = mNewTam * TAM_MAX*1.05 + 10*logf(lvl);
                     
-                    float randOuter = mNewTam * TAM_MAX*1.15 + 1300 * logf(lvl + 1.003);
+                    float randOuter = mNewTam * TAM_MAX*1.26 + 1300 * logf(lvl + 1.003);
                     
                     ci::vec2 circleInit = ci::vec2(randIner  * cos(angle + mNewAngle), randIner  * sin(angle + mNewAngle));// + ci::vec2(mNewDir.x, mNewDir.y);
                     ci::vec2 circleEnd  = ci::vec2(randOuter * cos(angle + mNewAngle), randOuter * sin(angle + mNewAngle));
